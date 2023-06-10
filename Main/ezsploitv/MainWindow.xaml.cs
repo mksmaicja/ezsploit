@@ -172,6 +172,8 @@ namespace ezsploitv
             storyboard.Begin();
         }
 
+        string injectmsg = "hakunamatata";
+
         Random rnd = new Random();
 
         int jajorandomowe;
@@ -900,13 +902,16 @@ namespace ezsploitv
             LogConsole("developed by - mikusdev");
             await Task.Delay(50);
             LogConsole("helper (bro helped me mentally) - nicknamez");
-            await Task.Delay(700);
-            LogConsole("Checking Comet key");
+            await Task.Delay(550);
+            
 
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Comet")
             {
+                LogConsole("Checking Comet key");
+                await Task.Delay(100);
                 if (Verify(HWID()))
                 {
+
                     LogConsole("Key ok!");
                     await Task.Delay(100);
                     sendnotify("EzSploit Loaded!");
@@ -1086,7 +1091,7 @@ namespace ezsploitv
             }
             savetext();
         }
-
+        int kysprosze = 0;
         private void Injectbutt(object sender, RoutedEventArgs e)
         {
             
@@ -1094,9 +1099,9 @@ namespace ezsploitv
             
             
         }
-
         public async void injectezsploit()
         {
+            injectmsg = webClient.DownloadString("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/gejinject.lua");
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
             {
                 if(!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Module.dll"))
@@ -1112,8 +1117,36 @@ namespace ezsploitv
                 await Task.Delay(100);
                 try
                 {
+                    var processes = Process.GetProcessesByName("Windows10Universal");
+                    foreach (var process in processes)
+                    {
+                        robloxpid = process.Id;
+                        await Task.Delay(500);
+                        try
+                        {
+                            fluxteam_net_api.run_script(robloxpid, GetText());
+                        }
+                        catch (Exception ex)
+                        {
+                            LogConsole("Execute error: " + ex);
+                        }
+
+                    }
+                    kysprosze = 0;
                     sendnotify("Injecting...");
                     fluxteam_net_api.inject();
+                    await Task.Delay(100);
+
+                    while (kysprosze == 0)
+                    {
+                        if (fluxteam_net_api.is_injected(robloxpid) == true)
+                        {
+                            await Task.Delay(1000);
+                            fluxteam_net_api.run_script(robloxpid, injectmsg);
+                            kysprosze = 1;
+                        }
+                        await Task.Delay(1000);
+                    }
                 }
                 catch (Exception ex)
                 {
