@@ -10,7 +10,7 @@
         Title="EzSploit V 6.5 - By mikusdev" Height="570" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
     <Grid x:Name="chujnia">
         <Grid x:Name="MainGrid" Loaded="Grid_Loaded" Width="800">
-            <Border x:Name="HomeBorder" BorderBrush="Black" BorderThickness="0" CornerRadius="8" Background="#FF0A0A0A" Width="800" Height="450" Margin="0,0,0,120">
+            <Border x:Name="HomeBorder" BorderBrush="Black" BorderThickness="0" CornerRadius="8" Background="#FF0A0A0A" Width="800" Height="450" Margin="0,0,0,120" d:IsHidden="True">
                 <Grid>
                     <Grid x:Name="Gridfull">
                         <Grid x:Name="GridDown" Margin="0,49,736,0">
@@ -273,7 +273,7 @@
                                     </Style>
                                 </Button.Resources>
                                 <Grid Height="45" Width="126">
-                                    <Label Content="Execute" Margin="47,0,0,7" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                    <Label Content="Execute" Margin="47,7,0,7" Foreground="White" HorizontalAlignment="Left"/>
                                     <Image Height="31" Source="/Octicons-cloud-upload.svg.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="31" Margin="11,7,0,0"/>
                                 </Grid>
 
@@ -384,6 +384,16 @@
 
                                 </Button.Resources>
                             </Button>
+                            <Button x:Name="Fluxteam_key" Content="Fluxus" Background="#FF191919" Foreground="White" FontSize="16" Click="fluxus_Click" RenderTransformOrigin="0.672,1.813" Margin="398,171,212,185" BorderBrush="#FF191919">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="8" />
+
+
+                                    </Style>
+
+                                </Button.Resources>
+                            </Button>
                         </Grid>
                         <Border x:Name="notifyBorder" BorderThickness="1" CornerRadius="8" Margin="193,-48,193,450">
                             <Grid Background="Black" Margin="1,8,-1,-1">
@@ -407,7 +417,7 @@
                     </Image>
                     <Label Content="EzSploit" Foreground="White" Margin="99,0,0,0" FontWeight="Bold" FontSize="36" HorizontalAlignment="Right" VerticalAlignment="Center" Width="143"/>
                     <Label Content="Loading UI..." Foreground="White" Margin="93,99,0,0" FontWeight="Bold" FontSize="24" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="39" Width="149" RenderTransformOrigin="1.006,1.284"/>
-                    <Label Content="Developed by: mikusdev" Foreground="White" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="39" Width="307" RenderTransformOrigin="1.006,1.284"/>
+                    <Label Content="Developer - mikusdev        Helper - nicknamez" Foreground="White" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="39" Width="819" RenderTransformOrigin="1.006,1.284"/>
                     <Label x:Name="randomfacts" Content="                     fun fact: EzSploit is developed by kid" Foreground="White" FontWeight="Bold" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Width="478" Margin="0,100,0,0"/>
                 </Grid>
             </Border>
@@ -444,6 +454,30 @@
 
                     </Button>
                     <TextBox x:Name="jebanysciemkluczxddd" HorizontalAlignment="Center" Margin="0,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="422" Height="38" Background="#FF141414" Foreground="White" FontSize="22"/>
+                </Grid>
+            </Border>
+            <Border x:Name="FLUXUSKEY" BorderBrush="Black" BorderThickness="1" CornerRadius="8" Margin="178,92,178,212" Height="NaN" Width="NaN" Background="Black" Visibility="Hidden">
+                <Grid x:Name="fluxuskeygrid1">
+                    <Label Content="Fluxus Key System" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Button x:Name="getkey1" FontSize="22" Click="getkeyflux_Click" RenderTransformOrigin="0.672,1.813" Margin="10,132,251,51" ContentStringFormat="Clear" BorderBrush="{x:Null}" Background="#FF141414" Content="Get Key" Foreground="White" FontWeight="Bold">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="7"/>
+
+                            </Style>
+                        </Button.Resources>
+
+                    </Button>
+                    <Button x:Name="checkkeyCopy1" FontSize="22" Click="checkkeyflux_Click" RenderTransformOrigin="0.672,1.813" Margin="251,132,10,51" ContentStringFormat="Clear" BorderBrush="{x:Null}" Background="#FF141414" Content="Check Key" Foreground="White" FontWeight="Bold">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="7"/>
+
+                            </Style>
+                        </Button.Resources>
+
+                    </Button>
+                    <TextBox x:Name="kluczykfluka" HorizontalAlignment="Center" Margin="0,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="422" Height="38" Background="#FF141414" Foreground="White" FontSize="22"/>
                 </Grid>
             </Border>
         </Grid>

@@ -2,6 +2,7 @@
 using DiscordRPC;
 using DiscordRPC.Logging;
 using DiscordRPC.Message;
+using Fluxus_IDE.Injector;
 using IWshRuntimeLibrary;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.Wpf;
@@ -16,6 +17,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -77,19 +79,25 @@ namespace ezsploitv
                 }
                 else
                 {
-                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Comet");
+                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Fluxus")
+                    {
+
+                    }
+                    else
+                    {
+                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Comet");
+                    }
                 }
             }
             
         }
 
-        [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        [return: MarshalAs(UnmanagedType.I1)]
-        public static extern bool Verify([MarshalAs(UnmanagedType.LPStr)] string key);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern IntPtr OpenProcess(uint access, bool inhert_handle, int pid);
 
-        [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl)]
-        [return: MarshalAs(UnmanagedType.BStr)]
-        public static extern string HWID();
+
+
+
 
         public static string HttpGet(string url)
         {
@@ -368,7 +376,7 @@ namespace ezsploitv
             {
                 new DLLInterfacing().Execute(GetText());
             }
-            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
             {
                 try
                 {
@@ -402,9 +410,36 @@ namespace ezsploitv
 
                 }
             }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Fluxus")
+            {
+                [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.StdCall)]
+                static extern int run_script(IntPtr proc, int pid, string path, [MarshalAs(UnmanagedType.LPWStr)] string script);
+
+                [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.Cdecl)]
+                [return: MarshalAs(UnmanagedType.BStr)]
+                static extern string HWID();
+
+                string FLUXUS_HWID = HWID();
+
+                string fluxus_file_path = "C:\\Program Files (x86)\\" + HWID() + ".dll";
+
+                var processes = Process.GetProcessesByName("Windows10Universal");
+                foreach (var process in processes)
+                {
+                    robloxpid = process.Id;
+                    await Task.Delay(100);
+                }
+
+                IntPtr intPtr = OpenProcess(2035711u, inhert_handle: false, robloxpid);
+                MessageBox.Show("debug1");
+                await Task.Delay(100);
+                run_script(intPtr, robloxpid, fluxus_file_path + "\\" + FLUXUS_HWID + ".dll", GetText());
+            }
             savetext();
         }
+
         
+
         private async void Close_Click(object sender, RoutedEventArgs e)
         {
             savetext();
@@ -907,6 +942,14 @@ namespace ezsploitv
 
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Comet")
             {
+                [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+                [return: MarshalAs(UnmanagedType.I1)]
+                static extern bool Verify([MarshalAs(UnmanagedType.LPStr)] string key);
+
+                [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl)]
+                [return: MarshalAs(UnmanagedType.BStr)]
+                static extern string HWID();
+
                 LogConsole("Checking Comet key");
                 await Task.Delay(100);
                 if (Verify(HWID()))
@@ -948,7 +991,7 @@ namespace ezsploitv
                     }
                 }
             }
-            else
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
             {
                 await Task.Delay(100);
                 sendnotify("EzSploit Loaded!");
@@ -968,11 +1011,69 @@ namespace ezsploitv
                     };
                 }
             }
-            
-            
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Fluxus")
+            {
+                [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+                [return: MarshalAs(UnmanagedType.I1)]
+                static extern bool Verify([MarshalAs(UnmanagedType.LPStr)] string key);
 
+
+                [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.Cdecl)]
+                [return: MarshalAs(UnmanagedType.BStr)]
+                static extern string HWID();
+
+
+                LogConsole("Checking Fluxus key");
+                await Task.Delay(100);
+                if (Verify(HWID()))
+                {
+
+                    LogConsole("Key ok!");
+                    await Task.Delay(100);
+                    sendnotify("EzSploit Loaded!");
+                    await Task.Delay(4000);
+                    savetext();
+
+                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\autoinject.txt") == "Turned on")
+                    {
+                        LogConsole("Auto-Inject initialized");
+                        ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
+
+                        processWatcher.Created += async (sender, proc) =>
+                        {
+                            Process RobloxProcess = proc;
+                            await Task.Delay(4000);
+                            injectezsploit();
+                        };
+                    }
+                }
+                else
+                {
+                    LogConsole("Wrong key!");
+                    FLUXUSKEY.Visibility = Visibility.Visible;
+                    MonacoEditor.Visibility = Visibility.Hidden;
+                    Fade(FLUXUSKEY);
+                    await Task.Delay(4000);
+                    try
+                    {
+                        savetext();
+                    }
+                    catch (Exception ex)
+                    {
+                        LogConsole("Textbox save error: " + ex);
+                    }
+                }
+            }
 
         }
+
+        private string get_file_sha384(string path)
+        {
+            using FileStream inputStream = File.OpenRead(path);
+            return BitConverter.ToString(new SHA384Managed().ComputeHash(inputStream)).Replace("-", string.Empty).ToLower();
+        }
+
+        Process[] processesByName = Process.GetProcessesByName("Windows10Universal");
 
         private async void killboblocx_Click(object sender, RoutedEventArgs e)
         {
@@ -1121,15 +1222,8 @@ namespace ezsploitv
                     foreach (var process in processes)
                     {
                         robloxpid = process.Id;
-                        await Task.Delay(500);
-                        try
-                        {
-                            fluxteam_net_api.run_script(robloxpid, GetText());
-                        }
-                        catch (Exception ex)
-                        {
-                            LogConsole("Execute error: " + ex);
-                        }
+                        await Task.Delay(100);
+                        
 
                     }
                     kysprosze = 0;
@@ -1155,6 +1249,14 @@ namespace ezsploitv
             }
             else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Comet")
             {
+                [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+                [return: MarshalAs(UnmanagedType.I1)]
+                static extern bool Verify([MarshalAs(UnmanagedType.LPStr)] string key);
+
+                [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl)]
+                [return: MarshalAs(UnmanagedType.BStr)]
+                static extern string HWID();
+
                 if (Verify(HWID()))
                 {
                     try
@@ -1173,9 +1275,79 @@ namespace ezsploitv
                     COMETKEY.Visibility = Visibility.Visible;
                 }
             }
-            
-            
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Fluxus")
+            {
+                
+
+                [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.Cdecl)]
+                [return: MarshalAs(UnmanagedType.BStr)]
+                static extern string HWID();
+
+                
+                Process[] processesByName = Process.GetProcessesByName("Windows10Universal");
+
+                string FLUXUS_HWID = HWID();
+
+                Fluxus_IDE.Injector.Injector InjectFluxus = new Fluxus_IDE.Injector.Injector();
+
+                string fluxus_file_path = "C:\\Program Files (x86)\\" + HWID();
+                if (processesByName.Length == 0)
+                {
+                    System.Windows.MessageBox.Show("The game was not found!\nDue to the release of Byfron, Fluxus currently only supports the Windows Store version of the game!\nPlease install and join using the Windows Store version and inject again!", "Fluxus Error");
+                }
+                try
+                {
+                    if (processesByName.Length != 0)
+                    {
+                        string fileName = Process.GetProcessById(processesByName[0].Id).MainModule.FileName;
+                        string text = get_file_sha384(fileName);
+
+                        string text3 = webClient.DownloadString("https://flux.li/windows/external/get_dll_hash.php?hash=" + text);
+                        if (text3 == "no")
+                        {
+                            System.Windows.MessageBox.Show("You are running a version of the game Fluxus is not updated for yet!\nPlease wait a few hours for an update and try again!", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
+                            return;
+                        }
+                        
+                        try
+                        {
+                            webClient.DownloadFile(text3, Path.Combine(fluxus_file_path, HWID() + ".dll"));
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                }
+                await Task.Delay(100);
+                switch (InjectFluxus.inject_legacy(false, fluxus_file_path + "\\" + FLUXUS_HWID + ".dll"))
+                {
+                    case Fluxus_IDE.Injector.Injector.Legacy_Result.AlreadyInjected:
+                        System.Windows.MessageBox.Show("Fluxus is already injected!", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
+                        break;
+                    case Fluxus_IDE.Injector.Injector.Legacy_Result.DLLNotFound:
+                        System.Windows.MessageBox.Show("Injection Failed! DLL not found!\n" + FLUXUS_HWID + ".dll", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
+                        break;
+                    case Fluxus_IDE.Injector.Injector.Legacy_Result.OpenProcFail:
+                        System.Windows.MessageBox.Show("Injection Failed - OpenProcFail failed!\n" + FLUXUS_HWID + ".dll", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
+                        break;
+                    case Fluxus_IDE.Injector.Injector.Legacy_Result.ProcNotOpen:
+                        System.Windows.MessageBox.Show("The game is not open! Please open the game before injecting.", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
+                        break;
+                    case Fluxus_IDE.Injector.Injector.Legacy_Result.LoadLibFail:
+                        System.Windows.MessageBox.Show("Injection Failed - LoadLibFail failed!\n" + FLUXUS_HWID + ".dll", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
+                        break;
+                    case Fluxus_IDE.Injector.Injector.Legacy_Result.Unknown:
+                        System.Windows.MessageBox.Show("Injection Failed - Unknown!\n" + FLUXUS_HWID + ".dll", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
+                        break;
+                    case Fluxus_IDE.Injector.Injector.Legacy_Result.AllocFail:
+                        break;
+                }
+            }
         }
+        
 
         private void MonacoEditor_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
@@ -1225,6 +1397,11 @@ namespace ezsploitv
 
         private void getkey_Click(object sender, RoutedEventArgs e)
         {
+            
+
+            [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl)]
+            [return: MarshalAs(UnmanagedType.BStr)]
+            static extern string HWID();
             try
             {
                 MessageBox.Show("When you get the key, paste it in the box below.");
@@ -1248,6 +1425,11 @@ namespace ezsploitv
         private DispatcherTimer KeySpam;
         private async void checkkey_Click(object sender, RoutedEventArgs e)
         {
+            [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+            [return: MarshalAs(UnmanagedType.I1)]
+            static extern bool Verify([MarshalAs(UnmanagedType.LPStr)] string key);
+
+            
             try
             {
                 if (Verify(jebanysciemkluczxddd.Text))
@@ -1285,6 +1467,56 @@ namespace ezsploitv
         {
             File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "KeylessFluxteam");
             LogConsole("Selected API: KeylessFluxteam");
+        }
+
+        private void fluxus_Click(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Fluxus");
+            LogConsole("Selected API: Fluxus");
+        }
+
+        private void getkeyflux_Click(object sender, RoutedEventArgs e)
+        {
+            [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.Cdecl)]
+            [return: MarshalAs(UnmanagedType.BStr)]
+            static extern string HWID();
+
+            
+            try
+            {
+                Process.Start("https://flux.li/windows/start.php?HWID=" + HWID());
+            }
+            catch (Exception ex)
+            {
+                
+                
+                MessageBox.Show("Get key error!\n" + ex.ToString());
+                
+            }
+        }
+
+        private void checkkeyflux_Click(object sender, RoutedEventArgs e)
+        {
+            [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+            [return: MarshalAs(UnmanagedType.I1)]
+            static extern bool Verify([MarshalAs(UnmanagedType.LPStr)] string key);
+            try
+            {
+                if (!Verify(kluczykfluka.Text))
+                {
+                    MessageBox.Show("Your key was invalid!");
+                }
+                else
+                {
+                    MessageBox.Show("Key valid!");
+                    Process.Start("c:\\mikusdevPrograms\\ezsploit\\EzSploitV4.exe");
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verify key error!\n" + ex.ToString());
+            }
         }
     }
 }

@@ -85,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Fluxus_IDE.Injector\Injector.cs" />
     <Compile Include="RBXMSEAPI.Classes\fluxteam_net_api.cs" />
     <Compile Include="RBXMSEAPI.Properties\Resources.cs" />
     <Compile Include="RBXMSEAPI.Properties\Settings.cs" />
