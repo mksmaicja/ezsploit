@@ -39,6 +39,7 @@ using System.Windows.Threading;
 using static System.Net.Mime.MediaTypeNames;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Path = System.IO.Path;
+using ValyseAPI;
 
 namespace ezsploitv
 {
@@ -50,6 +51,9 @@ namespace ezsploitv
         WebClient webClient = new WebClient();
 
         public DiscordRpcClient client;
+
+        ValyseAPI.Module valyseezsploit = new ValyseAPI.Module();
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -60,6 +64,11 @@ namespace ezsploitv
             listbox1.Items.Clear();
             Functions.PopulateListBox(listbox1, "c:\\mikusdevPrograms\\ezsploit\\Scripts", "*.txt");
             Functions.PopulateListBox(listbox1, "c:\\mikusdevPrograms\\ezsploit\\Scripts", " *.lua");
+
+
+            
+
+
 
             if (!Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\monaco-editor"))
             {
@@ -85,7 +94,14 @@ namespace ezsploitv
                     }
                     else
                     {
-                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Comet");
+                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Valyse")
+                        {
+
+                        }
+                        else
+                        {
+                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Comet");
+                        }
                     }
                 }
             }
@@ -98,13 +114,8 @@ namespace ezsploitv
 
 
 
-
-        public static string HttpGet(string url)
-        {
-            using WebClient webClient = new WebClient();
-            webClient.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
-            return webClient.DownloadString(url);
-        }
+        int isinitializedautoinj = 0;
+        
 
         Storyboard storyboard = new Storyboard();
         TimeSpan halfsecond = TimeSpan.FromMilliseconds(500);
@@ -434,6 +445,10 @@ namespace ezsploitv
                 MessageBox.Show("debug1");
                 await Task.Delay(100);
                 run_script(intPtr, robloxpid, fluxus_file_path + "\\" + FLUXUS_HWID + ".dll", GetText());
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Valyse")
+            {
+                Module.Execute(GetText());
             }
             savetext();
         }
@@ -792,7 +807,7 @@ namespace ezsploitv
             }
         }
 
-        public async void LogConsole(string sex)
+        public void LogConsole(string sex)
         {
             try
             {
@@ -931,8 +946,9 @@ namespace ezsploitv
             }
             await Task.Delay(50);
             LogConsole("Selected API: " + File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt"));
+            
             await Task.Delay(50);
-            LogConsole("version - 6.5 - new keyless API");
+            LogConsole("version - 6.6 - new keyless API");
             await Task.Delay(50);
             LogConsole("developed by - mikusdev");
             await Task.Delay(50);
@@ -968,6 +984,7 @@ namespace ezsploitv
 
                         processWatcher.Created += async (sender, proc) =>
                         {
+                            isinitializedautoinj = 1;
                             Process RobloxProcess = proc;
                             await Task.Delay(4000);
                             injectezsploit();
@@ -1002,6 +1019,7 @@ namespace ezsploitv
                 {
                     LogConsole("Auto-Inject initialized");
                     ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
+                    isinitializedautoinj = 1;
 
                     processWatcher.Created += async (sender, proc) =>
                     {
@@ -1037,6 +1055,7 @@ namespace ezsploitv
                     if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\autoinject.txt") == "Turned on")
                     {
                         LogConsole("Auto-Inject initialized");
+                        isinitializedautoinj = 1;
                         ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
 
                         processWatcher.Created += async (sender, proc) =>
@@ -1062,6 +1081,27 @@ namespace ezsploitv
                     {
                         LogConsole("Textbox save error: " + ex);
                     }
+                }
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Valyse")
+            {
+                await Task.Delay(100);
+                sendnotify("EzSploit Loaded!");
+                await Task.Delay(4000);
+                savetext();
+
+                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\autoinject.txt") == "Turned on")
+                {
+                    LogConsole("Auto-Inject initialized");
+                    ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
+                    isinitializedautoinj = 1;
+
+                    processWatcher.Created += async (sender, proc) =>
+                    {
+                        Process RobloxProcess = proc;
+                        await Task.Delay(4000);
+                        injectezsploit();
+                    };
                 }
             }
 
@@ -1124,8 +1164,26 @@ namespace ezsploitv
 
         private void oxygen_Click(object sender, RoutedEventArgs e)
         {
+            [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+            [return: MarshalAs(UnmanagedType.I1)]
+            static extern bool Verify([MarshalAs(UnmanagedType.LPStr)] string key);
+
+            [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl)]
+            [return: MarshalAs(UnmanagedType.BStr)]
+            static extern string HWID();
+
+
+
             File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Comet");
             LogConsole("Selected API: Comet");
+            if (Verify(HWID()))
+            {
+            }
+            else
+            {
+                MonacoEditor.Visibility = Visibility.Hidden;
+                COMETKEY.Visibility = Visibility.Visible;
+            }
         }
 
         private async void autoinject_Click(object sender, RoutedEventArgs e)
@@ -1249,31 +1307,17 @@ namespace ezsploitv
             }
             else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Comet")
             {
-                [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-                [return: MarshalAs(UnmanagedType.I1)]
-                static extern bool Verify([MarshalAs(UnmanagedType.LPStr)] string key);
-
-                [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl)]
-                [return: MarshalAs(UnmanagedType.BStr)]
-                static extern string HWID();
-
-                if (Verify(HWID()))
+                try
                 {
-                    try
-                    {
-                        sendnotify("Injecting...");
-                    }
-                    catch (Exception)
-                    {
-
-                    }
+                    sendnotify("Injecting...");
                     await Task.Delay(100);
                     RuyiAPI.inject();
                 }
-                else
+                catch (Exception)
                 {
-                    COMETKEY.Visibility = Visibility.Visible;
+
                 }
+                
             }
             else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Fluxus")
             {
@@ -1306,15 +1350,17 @@ namespace ezsploitv
                         if (text3 == "no")
                         {
                             System.Windows.MessageBox.Show("You are running a version of the game Fluxus is not updated for yet!\nPlease wait a few hours for an update and try again!", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
-                            return;
+                            MessageBox.Show("If you injected this API before, EzSploit will try to inject latest downloaded Fluxus.dll");
                         }
-                        
-                        try
+                        else
                         {
-                            webClient.DownloadFile(text3, Path.Combine(fluxus_file_path, HWID() + ".dll"));
-                        }
-                        catch (Exception)
-                        {
+                            try
+                            {
+                                webClient.DownloadFile(text3, Path.Combine(fluxus_file_path, HWID() + ".dll"));
+                            }
+                            catch (Exception)
+                            {
+                            }
                         }
                     }
                 }
@@ -1344,6 +1390,30 @@ namespace ezsploitv
                         break;
                     case Fluxus_IDE.Injector.Injector.Legacy_Result.AllocFail:
                         break;
+                }
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Valyse")
+            {
+                try
+                {
+                    sendnotify("Injecting...");
+                    await Module.Inject();
+                    await Task.Delay(100);
+
+                    while (kysprosze == 0)
+                    {
+                        if (Module.IsAttached() == true)
+                        {
+                            await Task.Delay(1000);
+                            Module.Execute(injectmsg);
+                            kysprosze = 1;
+                        }
+                        await Task.Delay(1000);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogConsole("Inject error: " + ex);
                 }
             }
         }
@@ -1471,8 +1541,25 @@ namespace ezsploitv
 
         private void fluxus_Click(object sender, RoutedEventArgs e)
         {
+            [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.Cdecl)]
+            [return: MarshalAs(UnmanagedType.BStr)]
+            static extern string HWID();
+
+            [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+            [return: MarshalAs(UnmanagedType.I1)]
+            static extern bool Verify([MarshalAs(UnmanagedType.LPStr)] string key);
+
+
             File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Fluxus");
             LogConsole("Selected API: Fluxus");
+            if (Verify(HWID()))
+            {
+            }
+            else
+            {
+                MonacoEditor.Visibility = Visibility.Hidden;
+                FLUXUSKEY.Visibility = Visibility.Visible;
+            }
         }
 
         private void getkeyflux_Click(object sender, RoutedEventArgs e)
@@ -1527,18 +1614,29 @@ namespace ezsploitv
             await Task.Delay(100);
             sendnotify("NOkey Loaded");
             savetext();
-            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\autoinject.txt") == "Turned on")
+            if(isinitializedautoinj == 0)
             {
-                LogConsole("Auto-Inject initialized");
-                ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
-
-                processWatcher.Created += async (sender, proc) =>
+                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\autoinject.txt") == "Turned on")
                 {
-                    Process RobloxProcess = proc;
-                    await Task.Delay(4000);
-                    injectezsploit();
-                };
+                    isinitializedautoinj = 1;
+                    LogConsole("Auto-Inject initialized");
+                    ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
+
+                    processWatcher.Created += async (sender, proc) =>
+                    {
+                        Process RobloxProcess = proc;
+                        await Task.Delay(4000);
+                        injectezsploit();
+                    };
+                }
             }
+            
+        }
+
+        private void valyse_Click(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Valyse");
+            LogConsole("Selected API: Valyse");
         }
     }
 }

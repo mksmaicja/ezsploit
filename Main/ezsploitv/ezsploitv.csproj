@@ -76,6 +76,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="ValyseAPI">
+      <HintPath>..\..\..\..\..\Downloads\bin\ValyseAPI.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -87,8 +90,6 @@
     </ApplicationDefinition>
     <Compile Include="Fluxus_IDE.Injector\Injector.cs" />
     <Compile Include="RBXMSEAPI.Classes\fluxteam_net_api.cs" />
-    <Compile Include="RBXMSEAPI.Properties\Resources.cs" />
-    <Compile Include="RBXMSEAPI.Properties\Settings.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -183,9 +184,7 @@
   <ItemGroup>
     <None Include="Resources\10_10_10.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RBXMSEAPI\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1774.30\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1774.30\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -135,6 +135,48 @@ namespace EzSploit_Loader
                             Console.WriteLine("]Downloading Comet key bypass");
                             webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/COMETleaked.dll", "c:\\mikusdevPrograms\\ezsploit\\COMETleaked.dll");
                         }
+
+                        if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\ValyseAPI.dll"))
+                        {
+                            Console.WriteLine("]Downloading Valyse deps");
+                            webClient.DownloadFile("https://api.valyse.net/download?download=valyse", "c:\\mikusdevPrograms\\ezsploit\\valyseTEMP.zip");
+                            
+                            if (!Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\valyseTMP"))
+                            {
+                                Directory.CreateDirectory("c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                            }
+                            else
+                            {
+                                Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\valyseTMP", true);
+                                Thread.Sleep(100);
+                                Directory.CreateDirectory("c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                            }
+                            Thread.Sleep(100);
+                            ZipFile.ExtractToDirectory("c:\\mikusdevPrograms\\ezsploit\\valyseTEMP.zip", "c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                            Thread.Sleep(100);
+                            File.Move("c:\\mikusdevPrograms\\ezsploit\\valyseTMP\\bin\\ValyseAPI.dll", "c:\\mikusdevPrograms\\ezsploit\\ValyseAPI.dll");
+                        }
+                        if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\System.Net.Http.Formatting.dll"))
+                        {
+                            Console.WriteLine("]Downloading Valyse deps");
+                            webClient.DownloadFile("https://api.valyse.net/download?download=valyse", "c:\\mikusdevPrograms\\ezsploit\\valyseTEMP.zip");
+
+                            if (!Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\valyseTMP"))
+                            {
+                                Directory.CreateDirectory("c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                            }
+                            else
+                            {
+                                Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\valyseTMP", true);
+                                Thread.Sleep(100);
+                                Directory.CreateDirectory("c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                            }
+                            Thread.Sleep(100);
+                            ZipFile.ExtractToDirectory("c:\\mikusdevPrograms\\ezsploit\\valyseTEMP.zip", "c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                            Thread.Sleep(100);
+                            File.Move("c:\\mikusdevPrograms\\ezsploit\\valyseTMP\\bin\\System.Net.Http.Formatting.dll", "c:\\mikusdevPrograms\\ezsploit\\System.Net.Http.Formatting.dll");
+                        }
+
                         if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Microsoft.Web.WebView2.Core.dll"))
                         {
                             Console.WriteLine("]Downloading Microsoft.Web.WebView2.Core.dll");
@@ -150,6 +192,7 @@ namespace EzSploit_Loader
                             Console.WriteLine("]Downloading Microsoft.Web.WebView2.Wpf.dll");
                             webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/Microsoft.Web.WebView2.Wpf.dll", "c:\\mikusdevPrograms\\ezsploit\\Microsoft.Web.WebView2.Wpf.dll");
                         }
+                        
                         if (!Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\Configs"))
                         {
                             Console.WriteLine("]Triggered redownload by user/update");
@@ -171,6 +214,34 @@ namespace EzSploit_Loader
                             webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/COMETleaked.dll", "c:\\mikusdevPrograms\\ezsploit\\COMETleaked.dll");
                             Console.WriteLine("]Downloading FluxusAuth.dll ");
                             webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/FluxusAuth.dll", "c:\\mikusdevPrograms\\ezsploit\\bin\\FluxusAuth.dll");
+
+                            Console.WriteLine("]Downloading Valyse deps");
+                            webClient.DownloadFile("https://api.valyse.net/download?download=valyse", "c:\\mikusdevPrograms\\ezsploit\\valyseTEMP.zip");
+
+                            if(File.Exists("c:\\mikusdevPrograms\\ezsploit\\ValyseAPI.dll"))
+                            {
+                                File.Delete("c:\\mikusdevPrograms\\ezsploit\\ValyseAPI.dll");
+                            }
+                            if (File.Exists("c:\\mikusdevPrograms\\ezsploit\\System.Net.Http.Formatting.dll"))
+                            {
+                                File.Delete("c:\\mikusdevPrograms\\ezsploit\\System.Net.Http.Formatting.dll");
+                            }
+                            if (!Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\valyseTMP"))
+                            {
+                                Directory.CreateDirectory("c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                            }
+                            else
+                            {
+                                Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\valyseTMP", true);
+                                Thread.Sleep(100);
+                                Directory.CreateDirectory("c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                            }
+                            Thread.Sleep(100);
+                            ZipFile.ExtractToDirectory("c:\\mikusdevPrograms\\ezsploit\\valyseTEMP.zip", "c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                            Thread.Sleep(100);
+                            File.Move("c:\\mikusdevPrograms\\ezsploit\\valyseTMP\\bin\\ValyseAPI.dll", "c:\\mikusdevPrograms\\ezsploit\\ValyseAPI.dll");
+                            File.Move("c:\\mikusdevPrograms\\ezsploit\\valyseTMP\\bin\\System.Net.Http.Formatting.dll", "c:\\mikusdevPrograms\\ezsploit\\System.Net.Http.Formatting.dll");
+                            
 
                             if (!Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\monaco-editor"))
                             {
@@ -205,7 +276,10 @@ namespace EzSploit_Loader
                                     Console.WriteLine("]Extracting runtimes.zip");
                                     ZipFile.ExtractToDirectory("c:\\mikusdevPrograms\\ezsploit\\runtimes.zip", "c:\\mikusdevPrograms\\ezsploit");
                                 }
-                                
+                                if (Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\valyseTMP"))
+                                {
+                                    Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                                }
                                 Console.WriteLine("Restored Configs!");
                                 Console.WriteLine("Launching EzSploit 6");
                                 webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/ezsploitv.exe", "c:\\mikusdevPrograms\\ezsploit\\ezV6.exe");
@@ -286,6 +360,11 @@ namespace EzSploit_Loader
                         {
                             Directory.Delete(@"c:\mikusdevPrograms\ezsploit\updatetemp");
                         }
+                        if (Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\valyseTMP"))
+                        {
+                            Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                        }
+                        
                         Console.WriteLine("Launching EzSploit 6");
                         webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/ezsploitv.exe", "c:\\mikusdevPrograms\\ezsploit\\ezV6.exe");
                         Thread.Sleep(100);
@@ -333,7 +412,7 @@ namespace EzSploit_Loader
             {
                 if (System.IO.File.Exists("c:\\mikusdevPrograms\\ezsploit\\version.txt"))
                 {
-                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "69");
+                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "70");
                 }
                 if (!System.IO.File.Exists("c:\\mikusdevPrograms\\ezsploit\\version.txt"))
                 {
@@ -341,7 +420,7 @@ namespace EzSploit_Loader
                     {
                         Thread.Sleep(50);
                     }
-                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "69");
+                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "70");
                 }
             }
 
