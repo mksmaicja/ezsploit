@@ -442,7 +442,6 @@ namespace ezsploitv
                 }
 
                 IntPtr intPtr = OpenProcess(2035711u, inhert_handle: false, robloxpid);
-                MessageBox.Show("debug1");
                 await Task.Delay(100);
                 run_script(intPtr, robloxpid, fluxus_file_path + "\\" + FLUXUS_HWID + ".dll", GetText());
             }
@@ -953,7 +952,9 @@ namespace ezsploitv
             LogConsole("developed by - mikusdev");
             await Task.Delay(50);
             LogConsole("helper (bro helped me mentally) - nicknamez");
-            await Task.Delay(550);
+            await Task.Delay(50);
+            LogConsole("discord - https://discord.gg/JJ4Qpe9gSC");
+            await Task.Delay(480);
             
 
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Comet")
@@ -1474,7 +1475,7 @@ namespace ezsploitv
             static extern string HWID();
             try
             {
-                MessageBox.Show("When you get the key, paste it in the box below.");
+                MessageBox.Show("When you get the key, paste it in the box.");
                 Process.Start("https://cometrbx.xyz/ks/start.php?HWID=" + HWID());
             }
             catch (Exception ex)

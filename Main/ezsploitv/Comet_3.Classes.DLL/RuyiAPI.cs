@@ -179,61 +179,7 @@ internal class RuyiAPI
         return run_script(phandle, pid, dll_path, script);
     }
 
-    public static void create_files(string dll_path_)
-    {
-        dll_path = DLLFileSystem.DLLPath;
-        string text = "";
-        string[] directories = Directory.GetDirectories(Environment.GetEnvironmentVariable("LocalAppData") + "\\Packages");
-        foreach (string text2 in directories)
-        {
-            if (text2.Contains("OBLOXCORPORATION") && Directory.GetDirectories(text2 + "\\AC").Any((string dir) => dir.Contains("Temp")))
-            {
-                text = text2 + "\\AC";
-            }
-        }
-        if (text == "")
-        {
-            return;
-        }
-        try
-        {
-            if (Directory.Exists("workspace"))
-            {
-                Directory.Move("workspace", "old_workspace");
-            }
-            if (Directory.Exists("autoexec"))
-            {
-                Directory.Move("autoexec", "old_autoexec");
-            }
-        }
-        catch
-        {
-        }
-        string text3 = Path.Combine(text, "workspace");
-        string text4 = Path.Combine(text, "autoexec");
-        if (!Directory.Exists(text3))
-        {
-            Directory.CreateDirectory(text3);
-        }
-        if (!Directory.Exists(text4))
-        {
-            Directory.CreateDirectory(text4);
-        }
-        if (!File.Exists("workspace.lnk"))
-        {
-            WshShell wshShell = (WshShell)Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("72C24DD5-D70A-438B-8A42-98424B88AFB8")));
-            IWshShortcut obj2 = (IWshShortcut)(dynamic)wshShell.CreateShortcut("workspace.lnk");
-            obj2.TargetPath = text3;
-            obj2.Save();
-        }
-        if (!File.Exists("autoexec.lnk"))
-        {
-            WshShell wshShell2 = (WshShell)Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("72C24DD5-D70A-438B-8A42-98424B88AFB8")));
-            IWshShortcut obj3 = (IWshShortcut)(dynamic)wshShell2.CreateShortcut("autoexec.lnk");
-            obj3.TargetPath = text4;
-            obj3.Save();
-        }
-    }
+    
 
     private static string get_file_sha384(string path)
     {

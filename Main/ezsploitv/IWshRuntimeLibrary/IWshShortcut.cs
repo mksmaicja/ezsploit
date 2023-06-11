@@ -20,8 +20,6 @@ public interface IWshShortcut
 		get;
 	}
 
-	void _VtblGap1_9();
-
 	[DispId(1005)]
 	string TargetPath
 	{
@@ -35,8 +33,6 @@ public interface IWshShortcut
 		[param: MarshalAs(UnmanagedType.BStr)]
 		set;
 	}
-
-	void _VtblGap2_5();
 
 	[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 	[DispId(2001)]

@@ -65,32 +65,15 @@ public class Injector
 	[DllImport("kernel32.dll", SetLastError = true)]
 	private static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttribute, IntPtr dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
 
-	[DllImport("kernel32.dll", SetLastError = true)]
-	private static extern int CloseHandle(IntPtr hObject);
-
-	[DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-	public static extern bool WaitNamedPipe(string pipe, int timeout = 10);
-
 	[DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.StdCall)]
 	public static extern int zYeDcizNXv(IntPtr proc, int pid, string path, string path_2);
 
 	[DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.StdCall)]
 	public static extern int run_script(IntPtr proc, int pid, string path, [MarshalAs(UnmanagedType.LPWStr)] string script);
 
-	[DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.StdCall)]
-	public static extern int rconsoleinput_call(IntPtr proc, int pid, string path, [MarshalAs(UnmanagedType.LPWStr)] string script);
 
-	[DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.StdCall)]
-	public static extern int setting_call(IntPtr proc, int pid, string path, int obs);
 
-	[DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.StdCall)]
-	[return: MarshalAs(UnmanagedType.BStr)]
-	public static extern string JtSZRomqos(IntPtr proc, int pid);
 
-	public bool Exists(string Name)
-	{
-		return WaitNamedPipe("\\\\.\\pipe\\" + Name);
-	}
 
 	public bool is_ghost_proc(ProcessModuleCollection a1)
 	{
@@ -209,55 +192,6 @@ public class Injector
 		}
 		return Legacy_Result.Unknown;
 	}
-
-	public string GetUser(int pid)
-	{
-		if (Clients.ContainsKey(pid))
-		{
-			return Clients[pid];
-		}
-		IntPtr intPtr = OpenProcess(2035711u, inhert_handle: false, pid);
-		if (intPtr != NULL)
-		{
-			string result = JtSZRomqos(intPtr, pid);
-			CloseHandle(intPtr);
-			return result;
-		}
-		return "FAIL";
-	}
-
-	public int run_script(string path, string script)
-	{
-        MessageBox.Show("debug3");
-        return run_script(phandle, pid, path, script);
-	}
-
-	public int rconsoleinput_call(string path, string script)
-	{
-		if (script == "")
-		{
-			script = "\0";
-		}
-		return rconsoleinput_call(phandle, pid, path, script);
-	}
-
-	public Result inject(bool hide_obs, string path, string path_2)
-	{
-		try
-		{
-			if (!File.Exists(path))
-			{
-				return Result.DLLNotFound;
-			}
-			return r_inject(hide_obs, path, path_2);
-		}
-		catch (Exception ex)
-		{
-			MessageBox.Show("Injection Error\n" + ex.ToString(), "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
-		}
-		return Result.Unknown;
-	}
-
 	public Legacy_Result inject_legacy(bool hide_obs, string path)
 	{
 		try

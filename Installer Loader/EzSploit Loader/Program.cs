@@ -176,6 +176,11 @@ namespace EzSploit_Loader
                             Thread.Sleep(100);
                             File.Move("c:\\mikusdevPrograms\\ezsploit\\valyseTMP\\bin\\System.Net.Http.Formatting.dll", "c:\\mikusdevPrograms\\ezsploit\\System.Net.Http.Formatting.dll");
                         }
+                        if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Valyse.exe"))
+                        {
+                            Console.WriteLine("]Downloading Valyse.crk");
+                            webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/Valyse.exe", "c:\\mikusdevPrograms\\ezsploit\\Valyse.exe");
+                        }
 
                         if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Microsoft.Web.WebView2.Core.dll"))
                         {
@@ -278,7 +283,7 @@ namespace EzSploit_Loader
                                 }
                                 if (Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\valyseTMP"))
                                 {
-                                    Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                                    Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\valyseTMP", true);
                                 }
                                 Console.WriteLine("Restored Configs!");
                                 Console.WriteLine("Launching EzSploit 6");
@@ -358,11 +363,11 @@ namespace EzSploit_Loader
                         }
                         if (Directory.Exists(@"c:\mikusdevPrograms\ezsploit\updatetemp"))
                         {
-                            Directory.Delete(@"c:\mikusdevPrograms\ezsploit\updatetemp");
+                            Directory.Delete(@"c:\mikusdevPrograms\ezsploit\updatetemp", true);
                         }
                         if (Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\valyseTMP"))
                         {
-                            Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\valyseTMP");
+                            Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\valyseTMP", true);
                         }
                         
                         Console.WriteLine("Launching EzSploit 6");
@@ -412,7 +417,7 @@ namespace EzSploit_Loader
             {
                 if (System.IO.File.Exists("c:\\mikusdevPrograms\\ezsploit\\version.txt"))
                 {
-                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "70");
+                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "71");
                 }
                 if (!System.IO.File.Exists("c:\\mikusdevPrograms\\ezsploit\\version.txt"))
                 {
@@ -420,7 +425,7 @@ namespace EzSploit_Loader
                     {
                         Thread.Sleep(50);
                     }
-                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "70");
+                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "71");
                 }
             }
 

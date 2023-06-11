@@ -9,7 +9,6 @@ namespace IWshRuntimeLibrary;
 [TypeIdentifier]
 public interface IWshShell3 : IWshShell2
 {
-	void _VtblGap1_4();
 
 	[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 	[DispId(1002)]

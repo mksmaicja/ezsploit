@@ -340,9 +340,9 @@
 
                                 </Button.Resources>
                             </Button>
-                            <Label Content="Select API" HorizontalAlignment="Left" Margin="419,13,0,0" VerticalAlignment="Top" Width="105" Foreground="White" FontSize="20" FontWeight="Bold"/>
-                            <Image Source="/Octicons-cloud-upload.svg.png" Margin="375,10,316,348"/>
-                            <Button x:Name="killroblox_Copy3" Content="Comet" Background="#FF191919" Foreground="White" FontSize="16" Click="oxygen_Click" RenderTransformOrigin="0.672,1.813" Margin="398,58,212,298" BorderBrush="#FF191919">
+                            <Label Content="Select API" HorizontalAlignment="Left" Margin="419,20,0,0" VerticalAlignment="Top" Width="105" Foreground="White" FontSize="20" FontWeight="Bold"/>
+                            <Image Source="/Octicons-cloud-upload.svg.png" Margin="375,17,316,341"/>
+                            <Button x:Name="killroblox_Copy3" Content="Comet" Background="#FF191919" Foreground="White" FontSize="16" Click="oxygen_Click" RenderTransformOrigin="0.672,1.813" Margin="398,65,212,291" BorderBrush="#FF191919">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="8" />
@@ -364,7 +364,7 @@
 
                                 </Button.Resources>
                             </Button>
-                            <Button x:Name="cometworkspace" Content="Comet" Background="#FF191919" Foreground="White" FontSize="16" Click="commetfolder_Click" RenderTransformOrigin="0.672,1.813" Margin="10,221,600,135" BorderBrush="#FF191919">
+                            <Button x:Name="cometworkspace" Content="Workspace" Background="#FF191919" Foreground="White" FontSize="16" Click="commetfolder_Click" RenderTransformOrigin="0.672,1.813" Margin="10,221,600,135" BorderBrush="#FF191919">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="8" />
@@ -384,7 +384,7 @@
 
                                 </Button.Resources>
                             </Button>
-                            <Button x:Name="Fluxteam_key" Content="Fluxus" Background="#FF191919" Foreground="White" FontSize="16" Click="fluxus_Click" RenderTransformOrigin="0.672,1.813" Margin="398,171,212,185" BorderBrush="#FF191919">
+                            <Button x:Name="Fluxteam_key" Content="Fluxus" Background="#FF191919" Foreground="White" FontSize="16" Click="fluxus_Click" RenderTransformOrigin="0.672,1.813" Margin="398,165,212,191" BorderBrush="#FF191919">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="8" />
@@ -394,7 +394,7 @@
 
                                 </Button.Resources>
                             </Button>
-                            <Button x:Name="Fluxteam_key_Copy" Content="Valyse" Background="#FF191919" Foreground="White" FontSize="16" Click="valyse_Click" RenderTransformOrigin="0.672,1.813" Margin="398,221,212,135" BorderBrush="#FF191919">
+                            <Button x:Name="Fluxteam_key_Copy" Content="Valyse" Background="#FF191919" Foreground="White" FontSize="16" Click="valyse_Click" RenderTransformOrigin="0.672,1.813" Margin="398,215,212,141" BorderBrush="#FF191919">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="8" />

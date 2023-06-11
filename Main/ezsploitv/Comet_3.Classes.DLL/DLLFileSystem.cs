@@ -12,19 +12,9 @@ internal class DLLFileSystem
 
     public static bool DiscordRPCEnabled = false;
 
-    [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-    [return: MarshalAs(UnmanagedType.I1)]
-    public static extern bool Verify([MarshalAs(UnmanagedType.LPStr)] string key);
-
     [DllImport("bin/CometAuth.dll", CallingConvention = CallingConvention.Cdecl)]
     [return: MarshalAs(UnmanagedType.BStr)]
     public static extern string HWID();
 
-    public static void CreateDLLFolder()
-    {
-        if (!Directory.Exists(DLLFolder))
-        {
-            Directory.CreateDirectory(DLLFolder);
-        }
-    }
+    
 }

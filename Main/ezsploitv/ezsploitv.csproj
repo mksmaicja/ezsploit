@@ -76,8 +76,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="ValyseAPI">
-      <HintPath>..\..\..\..\..\Downloads\bin\ValyseAPI.dll</HintPath>
+    <Reference Include="ValyseAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\mikusdevPrograms\ezsploit\ValyseAPI.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -102,8 +103,6 @@
     <Compile Include="Comet_3.Classes.DLL\DLLInterfacing.cs" />
     <Compile Include="Comet_3.Classes.DLL\HandleSettings.cs" />
     <Compile Include="Comet_3.Classes.DLL\RuyiAPI.cs" />
-    <Compile Include="Comet_3.Classes.DLL\Tools.cs" />
-    <Compile Include="Costura\AssemblyLoader.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="IWshRuntimeLibrary\IWshShell.cs" />
     <Compile Include="IWshRuntimeLibrary\IWshShell2.cs" />
