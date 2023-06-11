@@ -19,6 +19,22 @@ namespace EzSploit_Loader
 {
     internal class Program
     {
+
+        public static string HttpGet(string Url)
+        {
+            
+            WebClient obj = new WebClient
+            {
+                Headers = {
+            {
+                HttpRequestHeader.UserAgent,
+                "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)"
+            } }
+            };
+            string result = obj.DownloadString(Url);
+            obj.Dispose();
+            return result;
+        }
         static void Main(string[] args)
         {
             WebClient webClient = new WebClient();
@@ -88,41 +104,7 @@ namespace EzSploit_Loader
                             Console.WriteLine("]]Extracting runtimes.zip");
                             ZipFile.ExtractToDirectory("c:\\mikusdevPrograms\\ezsploit\\runtimes.zip", "c:\\mikusdevPrograms\\ezsploit");
                         }
-                        if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\bin\\FluxusAuth.dll"))
-                        {
-                            try
-                            {
-                                Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\bin", true);
-                                try
-                                {
-                                    File.Delete("c:\\mikusdevPrograms\\ezsploit\\Fluxus V7.exe");
-                                }
-                                catch (Exception)
-                                {
-
-                                }
-                                Console.WriteLine("Getting newest Fluxus dll...");
-                                string fluxusauth = webClient.DownloadString("https://flux.li/windows/external/drdl");
-                                await Task.Delay(100);
-                                Console.WriteLine("]Downloading FluxusAuth.dll");
-                                webClient.DownloadFile(fluxusauth, "c:\\mikusdevPrograms\\ezsploit\\Fluxus.zip");
-                                await Task.Delay(100);
-                                ZipFile.ExtractToDirectory("c:\\mikusdevPrograms\\ezsploit\\Fluxus.zip", "c:\\mikusdevPrograms\\ezsploit");
-                                await Task.Delay(100);
-                                try
-                                {
-                                    File.Delete("c:\\mikusdevPrograms\\ezsploit\\Fluxus V7.exe");
-                                }
-                                catch (Exception)
-                                {
-
-                                }
-                            }
-                            catch (Exception)
-                            {
-                                Console.WriteLine("Failed to download Fluxus.dll");
-                            }
-                        }
+                        
                         if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Ruyi.dll"))
                         {
                             Console.WriteLine("]Downloading Ruyi.dll");
@@ -137,8 +119,12 @@ namespace EzSploit_Loader
                             Console.WriteLine("]Downloading Comet_auth.dll");
                             webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/CometAuth.dll", "c:\\mikusdevPrograms\\ezsploit\\bin\\CometAuth.dll");
                         }
-                        
-                        
+                        if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\bin\\FluxusAuth.dll"))
+                        {
+                            Console.WriteLine("]Downloading FluxusAuth.dll ");
+                            webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/FluxusAuth.dll", "c:\\mikusdevPrograms\\ezsploit\\bin\\FluxusAuth.dll");
+                        }
+
                         if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\CometAuth.dll"))
                         {
                             Console.WriteLine("]Downloading main Comet_auth.dll");
@@ -168,45 +154,7 @@ namespace EzSploit_Loader
                         {
                             Console.WriteLine("]Triggered redownload by user/update");
                             Console.WriteLine("]]Downloading exploit dll's");
-                            try
-                            {
-                                try
-                                {
-                                    Directory.Delete("c:\\mikusdevPrograms\\ezsploit\\bin", true);
-                                }
-                                catch (Exception)
-                                {
-
-                                }
-                                try
-                                {
-                                    File.Delete("c:\\mikusdevPrograms\\ezsploit\\Fluxus V7.exe");
-                                }
-                                catch (Exception)
-                                {
-
-                                }
-                                Console.WriteLine("Getting newest Fluxus dll...");
-                                string fluxusauth = webClient.DownloadString("https://flux.li/windows/external/drdl");
-                                await Task.Delay(100);
-                                Console.WriteLine("]Downloading FluxusAuth.dll");
-                                webClient.DownloadFile(fluxusauth, "c:\\mikusdevPrograms\\ezsploit\\Fluxus.zip");
-                                await Task.Delay(100);
-                                ZipFile.ExtractToDirectory("c:\\mikusdevPrograms\\ezsploit\\Fluxus.zip", "c:\\mikusdevPrograms\\ezsploit");
-                                await Task.Delay(100);
-                                try
-                                {
-                                    File.Delete("c:\\mikusdevPrograms\\ezsploit\\Fluxus V7.exe");
-                                }
-                                catch (Exception)
-                                {
-
-                                }
-                            }
-                            catch (Exception)
-                            {
-                                Console.WriteLine("Failed to download Fluxus.dll");
-                            }
+                            
                             Console.WriteLine("]Downloading Ruyi.dll");
                             webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/Ruyi.dll", "c:\\mikusdevPrograms\\ezsploit\\Ruyi.dll");
 
@@ -221,7 +169,8 @@ namespace EzSploit_Loader
 
                             Console.WriteLine("]Downloading Comet keysys");
                             webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/COMETleaked.dll", "c:\\mikusdevPrograms\\ezsploit\\COMETleaked.dll");
-                            
+                            Console.WriteLine("]Downloading FluxusAuth.dll ");
+                            webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/FluxusAuth.dll", "c:\\mikusdevPrograms\\ezsploit\\bin\\FluxusAuth.dll");
 
                             if (!Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\monaco-editor"))
                             {
@@ -384,7 +333,7 @@ namespace EzSploit_Loader
             {
                 if (System.IO.File.Exists("c:\\mikusdevPrograms\\ezsploit\\version.txt"))
                 {
-                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "67");
+                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "69");
                 }
                 if (!System.IO.File.Exists("c:\\mikusdevPrograms\\ezsploit\\version.txt"))
                 {
@@ -392,7 +341,7 @@ namespace EzSploit_Loader
                     {
                         Thread.Sleep(50);
                     }
-                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "67");
+                    System.IO.File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\version.txt", "69");
                 }
             }
 

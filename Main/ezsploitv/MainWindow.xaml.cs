@@ -1518,5 +1518,27 @@ namespace ezsploitv
                 MessageBox.Show("Verify key error!\n" + ex.ToString());
             }
         }
+
+        private async void checkkdsdsdsdsdsds_Click(object sender, RoutedEventArgs e)
+        {
+            FLUXUSKEY.Visibility = Visibility.Hidden;
+            COMETKEY.Visibility = Visibility.Hidden;
+            MonacoEditor.Visibility = Visibility.Visible;
+            await Task.Delay(100);
+            sendnotify("NOkey Loaded");
+            savetext();
+            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\autoinject.txt") == "Turned on")
+            {
+                LogConsole("Auto-Inject initialized");
+                ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
+
+                processWatcher.Created += async (sender, proc) =>
+                {
+                    Process RobloxProcess = proc;
+                    await Task.Delay(4000);
+                    injectezsploit();
+                };
+            }
+        }
     }
 }
