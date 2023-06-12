@@ -65,7 +65,14 @@ namespace ezsploitv
             Functions.PopulateListBox(listbox1, "c:\\mikusdevPrograms\\ezsploit\\Scripts", "*.txt");
             Functions.PopulateListBox(listbox1, "c:\\mikusdevPrograms\\ezsploit\\Scripts", " *.lua");
 
-
+            if(!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt"))
+            {
+                using (FileStream fs = File.Create("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt"))
+                {
+                }
+                Thread.Sleep(20);
+                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt", "no");
+            }
             
 
 
@@ -192,6 +199,7 @@ namespace ezsploitv
         }
 
         string injectmsg = "hakunamatata";
+        string injectmsgint = "hakunamatata";
 
         Random rnd = new Random();
 
@@ -1224,6 +1232,14 @@ namespace ezsploitv
             {
                 autoinjbutton.Foreground = Brushes.Red;
             }
+            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
+            {
+                internalswitch.Foreground = Brushes.Red;
+            }
+            else
+            {
+                internalswitch.Foreground = Brushes.Green;
+            }
         }
 
         private void folder1_Click(object sender, RoutedEventArgs e)
@@ -1261,7 +1277,8 @@ namespace ezsploitv
         }
         public async void injectezsploit()
         {
-            injectmsg = webClient.DownloadString("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/gejinject.lua");
+            injectmsg = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/gejinject.lua\", true))()";
+            injectmsgint = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/getinjectinternal.lua\", true))()";
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
             {
                 if(!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Module.dll"))
@@ -1295,7 +1312,15 @@ namespace ezsploitv
                         if (fluxteam_net_api.is_injected(robloxpid) == true)
                         {
                             await Task.Delay(1000);
-                            fluxteam_net_api.run_script(robloxpid, injectmsg);
+                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
+                            {
+                                fluxteam_net_api.run_script(robloxpid, injectmsg);
+                            }
+                            else
+                            {
+                                fluxteam_net_api.run_script(robloxpid, injectmsgint);
+                            }
+                            
                             kysprosze = 1;
                         }
                         await Task.Delay(1000);
@@ -1313,6 +1338,27 @@ namespace ezsploitv
                     sendnotify("Injecting...");
                     await Task.Delay(100);
                     RuyiAPI.inject();
+
+                    kysprosze = 0;
+
+                    while (kysprosze == 0)
+                    {
+                        if (RuyiAPI.is_injected() == true)
+                        {
+                            await Task.Delay(1000);
+                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
+                            {
+                                new DLLInterfacing().Execute(injectmsg);
+                            }
+                            else
+                            {
+                                new DLLInterfacing().Execute(injectmsgint);
+                            }
+                            
+                            kysprosze = 1;
+                        }
+                        await Task.Delay(1000);
+                    }
                 }
                 catch (Exception)
                 {
@@ -1392,6 +1438,28 @@ namespace ezsploitv
                     case Fluxus_IDE.Injector.Injector.Legacy_Result.AllocFail:
                         break;
                 }
+
+                [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.StdCall)]
+                static extern int run_script(IntPtr proc, int pid, string path, [MarshalAs(UnmanagedType.LPWStr)] string script);
+
+                var processes = Process.GetProcessesByName("Windows10Universal");
+                foreach (var process in processes)
+                {
+                    robloxpid = process.Id;
+                    await Task.Delay(100);
+                }
+
+                IntPtr intPtr = OpenProcess(2035711u, inhert_handle: false, robloxpid);
+                await Task.Delay(100);
+                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
+                {
+                    run_script(intPtr, robloxpid, fluxus_file_path + "\\" + FLUXUS_HWID + ".dll", injectmsg);
+                }
+                else
+                {
+                    run_script(intPtr, robloxpid, fluxus_file_path + "\\" + FLUXUS_HWID + ".dll", injectmsgint);
+                }
+                
             }
             else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Valyse")
             {
@@ -1399,18 +1467,16 @@ namespace ezsploitv
                 {
                     sendnotify("Injecting...");
                     await Module.Inject();
-                    await Task.Delay(100);
-
-                    while (kysprosze == 0)
+                    await Task.Delay(2100);
+                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
                     {
-                        if (Module.IsAttached() == true)
-                        {
-                            await Task.Delay(1000);
-                            Module.Execute(injectmsg);
-                            kysprosze = 1;
-                        }
-                        await Task.Delay(1000);
+                        Module.Execute(injectmsg);
                     }
+                    else
+                    {
+                        Module.Execute(injectmsgint);
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -1638,6 +1704,26 @@ namespace ezsploitv
         {
             File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Valyse");
             LogConsole("Selected API: Valyse");
+        }
+
+        private void turninternal_Click(object sender, RoutedEventArgs e)
+        {
+            if(File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
+            {
+                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt", "yes");
+                internalswitch.Foreground = Brushes.Green;
+                sendnotify("Turned on!");
+                
+            }
+            else
+            {
+                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt", "no");
+                internalswitch.Foreground = Brushes.Red;
+                sendnotify("Turned off!");
+                
+            }
+            MessageBox.Show("restart roblox to take effect! Turn on Auto-Inject for best effect.");
+            MessageBox.Show("If you are in game, you can press 'insert' on your keyboard to open/close UI. If nothing is happening try to hit inject button and try again", "How it works?");
         }
     }
 }

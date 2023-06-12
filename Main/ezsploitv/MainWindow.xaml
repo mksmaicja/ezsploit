@@ -404,6 +404,16 @@
 
                                 </Button.Resources>
                             </Button>
+                            <Button x:Name="internalswitch" Content="Internal UI" Background="#FF191919" Foreground="White" FontSize="16" Click="turninternal_Click" RenderTransformOrigin="0.672,1.813" Margin="194,171,416,185" BorderBrush="#FF191919">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="8" />
+
+
+                                    </Style>
+
+                                </Button.Resources>
+                            </Button>
                         </Grid>
                         <Border x:Name="notifyBorder" BorderThickness="1" CornerRadius="8" Margin="193,-48,193,450">
                             <Grid Background="Black" Margin="1,8,-1,-1">
