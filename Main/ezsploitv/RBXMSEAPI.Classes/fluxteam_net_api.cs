@@ -127,34 +127,6 @@ public static class fluxteam_net_api
 		}
 	}
 
-	public static void inject()
-	{
-        dll_path = "c:\\mikusdevPrograms\\ezsploit\\Module.dll";
-        switch (inject_custom())
-		{
-		case Result.DLLNotFound:
-			MessageBox.Show("Injection Failed! DLL not found!\n", "Injection");
-			break;
-		case Result.OpenProcFail:
-			MessageBox.Show("Injection Failed - OpenProcFail failed!\n", "Injection");
-			break;
-		case Result.AllocFail:
-			MessageBox.Show("Injection Failed - AllocFail failed!\n", "Injection");
-			break;
-		case Result.LoadLibFail:
-			MessageBox.Show("Injection Failed - LoadLibFail failed!\n", "Injection");
-			break;
-		case Result.ProcNotOpen:
-			MessageBox.Show("Failure to find UWP game!\n\nPlease make sure you are using the game from the Microsoft Store and not the browser!", "Injection");
-			break;
-		case Result.Unknown:
-			MessageBox.Show("Injection Failed - Unknown!\n", "Injection");
-			break;
-		case Result.AlreadyInjected:
-			break;
-		}
-	}
-
 	public static bool is_injected(int pid)
 	{
         dll_path = "c:\\mikusdevPrograms\\ezsploit\\Module.dll";

@@ -1,0 +1,18 @@
+﻿<Window x:Class="EzSploit_Loader_V2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EzSploit_Loader_V2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="306" Width="417" WindowStyle="None" Background="{x:Null}" Foreground="{x:Null}" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="GRID1" >
+        <Border BorderThickness="1" CornerRadius="8">
+            <Grid Loaded="Grid_Loaded">
+                <Image Height="160" Width="160" Source="/ezsploit5.png" Margin="108,10,107,94"/>
+                <Label x:Name="textlabel" Content="Welcome To EzSploit Loader!" Margin="0,215,0,10" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Width="415" HorizontalContentAlignment="Center"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

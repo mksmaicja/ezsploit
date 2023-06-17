@@ -131,37 +131,7 @@ internal class RuyiAPI
         }
     }
 
-    public static void inject()
-    {
-        dll_path = DLLFileSystem.DLLPath;
-        if (GetCorrectDLL())
-        {
-            switch (inject_custom())
-            {
-                case Result.DLLNotFound:
-                    System.Windows.Forms.MessageBox.Show("Injection Failed! DLL not found!\n", "Injection");
-                    break;
-                case Result.OpenProcFail:
-                    System.Windows.Forms.MessageBox.Show("Injection Failed - OpenProcFail failed!\n", "Injection");
-                    break;
-                case Result.AllocFail:
-                    System.Windows.Forms.MessageBox.Show("Injection Failed - AllocFail failed!\n", "Injection");
-                    break;
-                case Result.LoadLibFail:
-                    System.Windows.Forms.MessageBox.Show("Injection Failed - LoadLibFail failed!\n", "Injection");
-                    break;
-                case Result.ProcNotOpen:
-                    System.Windows.Forms.MessageBox.Show("Failure to find UWP game!\n\nPlease make sure you are using the game from the Microsoft Store and not the browser!", "Injection");
-                    break;
-                case Result.Unknown:
-                    System.Windows.Forms.MessageBox.Show("Injection Failed - Unknown!\n", "Injection");
-                    break;
-                case Result.AlreadyInjected:
-                    System.Windows.MessageBox.Show("Already injected");
-                    break;
-            }
-        }
-    }
+
 
     public static bool is_injected()
     {
@@ -187,7 +157,7 @@ internal class RuyiAPI
         return BitConverter.ToString(new SHA384Managed().ComputeHash(inputStream)).Replace("-", string.Empty).ToLower();
     }
 
-    private static bool GetCorrectDLL()
+    public static bool GetCorrectDLL()
     {
         dll_path = DLLFileSystem.DLLPath;
         

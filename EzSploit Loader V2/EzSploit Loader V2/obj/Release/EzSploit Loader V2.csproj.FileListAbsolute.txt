@@ -1,0 +1,18 @@
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\bin\Release\EzSploit Loader V2.exe.config
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\bin\Release\EzSploit Loader V2.exe
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\bin\Release\EzSploit Loader V2.pdb
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit Loader V2.csproj.AssemblyReference.cache
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit Loader V2.csproj.SuggestedBindingRedirects.cache
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit Loader V2.csproj.ResolveComReference.cache
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\MainWindow.g.cs
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\App.g.cs
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit Loader V2_MarkupCompile.cache
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit Loader V2_MarkupCompile.lref
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\MainWindow.baml
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit Loader V2.g.resources
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit_Loader_V2.Properties.Resources.resources
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit Loader V2.csproj.GenerateResource.cache
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit Loader V2.csproj.CoreCompileInputs.cache
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit Loader V2.exe
+C:\Users\mdev\Documents\git\ezsploit\EzSploit Loader V2\EzSploit Loader V2\obj\Release\EzSploit Loader V2.pdb

@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:ezsploitv"
         xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Name="window" x:Class="ezsploitv.MainWindow"
         mc:Ignorable="d"
-        Title="EzSploit V 6.6 - By mikusdev" Height="570" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
+        Title="EzSploit V 6.6 - By mikusdev" Height="570" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen">
     <Grid x:Name="chujnia">
         <Grid x:Name="MainGrid" Loaded="Grid_Loaded" Width="800">
             <Border x:Name="HomeBorder" BorderBrush="Black" BorderThickness="0" CornerRadius="8" Background="#FF0A0A0A" Width="800" Height="450" Margin="0,0,0,120">
@@ -414,12 +414,17 @@
 
                                 </Button.Resources>
                             </Button>
+                            <Button x:Name="cometworkspace_Copy" Content="AutoExecute" Background="#FF191919" Foreground="White" FontSize="16" Click="autoexecfolder_Click" RenderTransformOrigin="0.672,1.813" Margin="10,271,600,85" BorderBrush="#FF191919">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="8" />
+
+
+                                    </Style>
+
+                                </Button.Resources>
+                            </Button>
                         </Grid>
-                        <Border x:Name="notifyBorder" BorderThickness="1" CornerRadius="8" Margin="193,-48,193,450">
-                            <Grid Background="Black" Margin="1,8,-1,-1">
-                                <Label x:Name="notifytext" Content="notification text" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
-                            </Grid>
-                        </Border>
                     </Grid>
                 </Grid>
             </Border>
@@ -516,6 +521,11 @@
                         </Button.Resources>
 
                     </Button>
+                </Grid>
+            </Border>
+            <Border x:Name="notifyBorder" BorderThickness="1" CornerRadius="8" Margin="193,-48,193,570">
+                <Grid Background="Black" Margin="1,-1,-1,-1">
+                    <Label x:Name="notifytext" Content="notification text" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
                 </Grid>
             </Border>
         </Grid>

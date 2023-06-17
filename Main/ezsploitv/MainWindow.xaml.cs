@@ -390,7 +390,7 @@ namespace ezsploitv
         {
             
             LogConsole("Trying Execute...");
-            sendnotify("Trying Execute...");
+            sendnotify("Executing...");
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Comet")
             {
                 new DLLInterfacing().Execute(GetText());
@@ -800,11 +800,11 @@ namespace ezsploitv
             {
                 notifytext.Content = not;
                 notifyBorder.Visibility = Visibility.Visible;
-                ObjectShiftPos(notifyBorder, notifyBorder.Margin, new Thickness(193, -2, 193, 404));
+                ObjectShiftPos(notifyBorder, notifyBorder.Margin, new Thickness(193, 0, 193, 522));
                 Fade(notifyBorder);
                 await Task.Delay(1500);
                 FadeOut(notifyBorder);
-                ObjectShiftPos(notifyBorder, notifyBorder.Margin, new Thickness(193, -48, 193, 450));
+                ObjectShiftPos(notifyBorder, notifyBorder.Margin, new Thickness(193, -48, 193, 570));
                 await Task.Delay(500);
                 notifyBorder.Visibility = Visibility.Hidden;
             }
@@ -828,7 +828,7 @@ namespace ezsploitv
                 }
                 catch (Exception)
                 {
-                    
+                    MessageBox.Show(sex, "FAILED TO PRINT IN CONSOLE:");
                 }
             }
         }
@@ -997,6 +997,8 @@ namespace ezsploitv
                             Process RobloxProcess = proc;
                             await Task.Delay(4000);
                             injectezsploit();
+                            
+                            
                         };
                     }
                 }
@@ -1267,7 +1269,7 @@ namespace ezsploitv
             }
             savetext();
         }
-        int kysprosze = 0;
+        string autoexecfolder = "kys";
         private void Injectbutt(object sender, RoutedEventArgs e)
         {
             
@@ -1277,118 +1279,163 @@ namespace ezsploitv
         }
         public async void injectezsploit()
         {
-            injectmsg = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/gejinject.lua\", true))()";
-            injectmsgint = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/getinjectinternal.lua\", true))()";
-            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
+            Process[] processesByName = Process.GetProcessesByName("Windows10Universal");
+            if (processesByName.Length == 0)
             {
-                if(!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Module.dll"))
+                System.Windows.MessageBox.Show("The game was not found!\r You need to run roblox from microsoft store.");
+            }
+            else
+            {
+                sendnotify("Injecting...");
+
+                injectmsg = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/gejinject.lua\", true))()";
+                injectmsgint = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/getinjectinternal.lua\", true))()";
+                DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(Environment.GetEnvironmentVariable("LocalAppData") + "\\Packages");
+                FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + "ROBLOXCORPORATION" + "*.*");
+                DirectoryInfo[] dirsInDir = hdDirectoryInWhichToSearch.GetDirectories("*" + "ROBLOXCORPORATION" + "*.*");
+
+                foreach (DirectoryInfo foundDir in dirsInDir)
                 {
-                    LogConsole("Downloading API deps...");
-                    webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/Module.dll", "c:\\mikusdevPrograms\\ezsploit\\Module.dll");
+                    autoexecfolder = foundDir.FullName + "\\AC\\autoexec";
                 }
-                if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Fluxteam_net_API.dll"))
+                await Task.Delay(40);
+                if (!File.Exists(autoexecfolder + "\\ezsploitinject.lua"))
                 {
-                    LogConsole("Downloading API deps...");
-                    webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/Fluxteam_net_API.dll", "c:\\mikusdevPrograms\\ezsploit\\Fluxteam_net_API.dll");
+                    using (FileStream fs = File.Create(autoexecfolder + "\\ezsploitinject.lua")) { }
                 }
-                await Task.Delay(100);
-                try
+                await Task.Delay(40);
+                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
                 {
-                    var processes = Process.GetProcessesByName("Windows10Universal");
-                    foreach (var process in processes)
+                    File.WriteAllText(autoexecfolder + "\\ezsploitinject.lua", injectmsg);
+                }
+                else
+                {
+                    File.WriteAllText(autoexecfolder + "\\ezsploitinject.lua", injectmsgint);
+                }
+
+                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
+                {
+                    if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Module.dll"))
                     {
-                        robloxpid = process.Id;
-                        await Task.Delay(100);
+                        LogConsole("Downloading API deps...");
+                        webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/Module.dll", "c:\\mikusdevPrograms\\ezsploit\\Module.dll");
+                    }
+                    if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Fluxteam_net_API.dll"))
+                    {
+                        LogConsole("Downloading API deps...");
+                        webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/Fluxteam_net_API.dll", "c:\\mikusdevPrograms\\ezsploit\\Fluxteam_net_API.dll");
+                    }
+                    await Task.Delay(40);
+                    try
+                    {
+                        fluxteam_net_api.dll_path = "c:\\mikusdevPrograms\\ezsploit\\Module.dll";
+                        switch (fluxteam_net_api.inject_custom())
+                        {
+                            case fluxteam_net_api.Result.DLLNotFound:
+                                sendnotify("DLL not found!");
+                                LogConsole("Injection Failed! DLL not found!\n");
+                                break;
+                            case fluxteam_net_api.Result.OpenProcFail:
+                                sendnotify("Injection Failed!");
+                                LogConsole("Injection Failed - OpenProcFail failed!\n");
+                                break;
+                            case fluxteam_net_api.Result.AllocFail:
+                                LogConsole("Injection Failed - AllocFail failed!\n");
+                                break;
+                            case fluxteam_net_api.Result.LoadLibFail:
+                                sendnotify("Failed to load lib");
+                                LogConsole("Injection Failed - LoadLibFail failed!\n");
+                                break;
+                            case fluxteam_net_api.Result.ProcNotOpen:
+                                sendnotify("Game not opened!");
+                                LogConsole("Failure to find UWP game!\n\nPlease make sure you are using the game from the Microsoft Store and not the browser!");
+                                break;
+                            case fluxteam_net_api.Result.Unknown:
+                                sendnotify("Unknown error");
+                                LogConsole("Injection Failed - Unknown!\n");
+                                break;
+                            case fluxteam_net_api.Result.AlreadyInjected:
+                                sendnotify("Already injected!");
+                                LogConsole("KeylessFluxteam is already injected");
+                                break;
+                            case fluxteam_net_api.Result.Success:
+                                sendnotify("Injected!");
+                                break;
+                        }
                         
 
                     }
-                    kysprosze = 0;
-                    sendnotify("Injecting...");
-                    fluxteam_net_api.inject();
-                    await Task.Delay(100);
-
-                    while (kysprosze == 0)
+                    catch (Exception ex)
                     {
-                        if (fluxteam_net_api.is_injected(robloxpid) == true)
-                        {
-                            await Task.Delay(1000);
-                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
-                            {
-                                fluxteam_net_api.run_script(robloxpid, injectmsg);
-                            }
-                            else
-                            {
-                                fluxteam_net_api.run_script(robloxpid, injectmsgint);
-                            }
-                            
-                            kysprosze = 1;
-                        }
-                        await Task.Delay(1000);
+                        LogConsole("Inject error: " + ex);
                     }
                 }
-                catch (Exception ex)
+                else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Comet")
                 {
-                    LogConsole("Inject error: " + ex);
-                }
-            }
-            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Comet")
-            {
-                try
-                {
-                    sendnotify("Injecting...");
-                    await Task.Delay(100);
-                    RuyiAPI.inject();
-
-                    kysprosze = 0;
-
-                    while (kysprosze == 0)
+                    try
                     {
-                        if (RuyiAPI.is_injected() == true)
+                        RuyiAPI.dll_path = DLLFileSystem.DLLPath;
+                        if (RuyiAPI.GetCorrectDLL())
                         {
-                            await Task.Delay(1000);
-                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
+                            switch (RuyiAPI.inject_custom())
                             {
-                                new DLLInterfacing().Execute(injectmsg);
-                            }
-                            else
-                            {
-                                new DLLInterfacing().Execute(injectmsgint);
+                                case RuyiAPI.Result.DLLNotFound:
+                                    sendnotify("DLL not found!");
+                                    LogConsole("Injection Failed! DLL not found!\n");
+                                    break;
+                                case RuyiAPI.Result.OpenProcFail:
+                                    sendnotify("Injection Failed!");
+                                    LogConsole("Injection Failed - OpenProcFail failed!\n");
+                                    break;
+                                case RuyiAPI.Result.AllocFail:
+                                    LogConsole("Injection Failed - AllocFail failed!\n");
+                                    break;
+                                case RuyiAPI.Result.LoadLibFail:
+                                    sendnotify("Failed to load lib");
+                                    LogConsole("Injection Failed - LoadLibFail failed!\n");
+                                    break;
+                                case RuyiAPI.Result.ProcNotOpen:
+                                    sendnotify("Game not opened!");
+                                    LogConsole("Failure to find UWP game!\n\nPlease make sure you are using the game from the Microsoft Store and not the browser!");
+                                    break;
+                                case RuyiAPI.Result.Unknown:
+                                    sendnotify("Unknown error");
+                                    LogConsole("Injection Failed - Unknown!\n");
+                                    break;
+                                case RuyiAPI.Result.AlreadyInjected:
+                                    sendnotify("Already injected!");
+                                    LogConsole("CometAPI is already injected");
+                                    break;
+                                case RuyiAPI.Result.Success:
+                                    sendnotify("Injected!");
+                                    break;
                             }
                             
-                            kysprosze = 1;
                         }
-                        await Task.Delay(1000);
+
+
                     }
-                }
-                catch (Exception)
-                {
+                    catch (Exception)
+                    {
+
+                    }
 
                 }
-                
-            }
-            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Fluxus")
-            {
-                
-
-                [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.Cdecl)]
-                [return: MarshalAs(UnmanagedType.BStr)]
-                static extern string HWID();
-
-                
-                Process[] processesByName = Process.GetProcessesByName("Windows10Universal");
-
-                string FLUXUS_HWID = HWID();
-
-                Fluxus_IDE.Injector.Injector InjectFluxus = new Fluxus_IDE.Injector.Injector();
-
-                string fluxus_file_path = "C:\\Program Files (x86)\\" + HWID();
-                if (processesByName.Length == 0)
+                else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Fluxus")
                 {
-                    System.Windows.MessageBox.Show("The game was not found!\nDue to the release of Byfron, Fluxus currently only supports the Windows Store version of the game!\nPlease install and join using the Windows Store version and inject again!", "Fluxus Error");
-                }
-                try
-                {
-                    if (processesByName.Length != 0)
+
+
+                    [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.Cdecl)]
+                    [return: MarshalAs(UnmanagedType.BStr)]
+                    static extern string HWID();
+
+                    string FLUXUS_HWID = HWID();
+
+                    Fluxus_IDE.Injector.Injector InjectFluxus = new Fluxus_IDE.Injector.Injector();
+
+                    string fluxus_file_path = "C:\\Program Files (x86)\\" + HWID();
+                    
+                    try
                     {
                         string fileName = Process.GetProcessById(processesByName[0].Id).MainModule.FileName;
                         string text = get_file_sha384(fileName);
@@ -1410,79 +1457,59 @@ namespace ezsploitv
                             }
                         }
                     }
-                }
-                catch (Exception)
-                {
-                }
-                await Task.Delay(100);
-                switch (InjectFluxus.inject_legacy(false, fluxus_file_path + "\\" + FLUXUS_HWID + ".dll"))
-                {
-                    case Fluxus_IDE.Injector.Injector.Legacy_Result.AlreadyInjected:
-                        System.Windows.MessageBox.Show("Fluxus is already injected!", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
-                        break;
-                    case Fluxus_IDE.Injector.Injector.Legacy_Result.DLLNotFound:
-                        System.Windows.MessageBox.Show("Injection Failed! DLL not found!\n" + FLUXUS_HWID + ".dll", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
-                        break;
-                    case Fluxus_IDE.Injector.Injector.Legacy_Result.OpenProcFail:
-                        System.Windows.MessageBox.Show("Injection Failed - OpenProcFail failed!\n" + FLUXUS_HWID + ".dll", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
-                        break;
-                    case Fluxus_IDE.Injector.Injector.Legacy_Result.ProcNotOpen:
-                        System.Windows.MessageBox.Show("The game is not open! Please open the game before injecting.", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
-                        break;
-                    case Fluxus_IDE.Injector.Injector.Legacy_Result.LoadLibFail:
-                        System.Windows.MessageBox.Show("Injection Failed - LoadLibFail failed!\n" + FLUXUS_HWID + ".dll", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
-                        break;
-                    case Fluxus_IDE.Injector.Injector.Legacy_Result.Unknown:
-                        System.Windows.MessageBox.Show("Injection Failed - Unknown!\n" + FLUXUS_HWID + ".dll", "Injection", MessageBoxButton.OK, MessageBoxImage.Hand);
-                        break;
-                    case Fluxus_IDE.Injector.Injector.Legacy_Result.AllocFail:
-                        break;
-                }
-
-                [DllImport("bin/FluxusAuth.dll", CallingConvention = CallingConvention.StdCall)]
-                static extern int run_script(IntPtr proc, int pid, string path, [MarshalAs(UnmanagedType.LPWStr)] string script);
-
-                var processes = Process.GetProcessesByName("Windows10Universal");
-                foreach (var process in processes)
-                {
-                    robloxpid = process.Id;
-                    await Task.Delay(100);
-                }
-
-                IntPtr intPtr = OpenProcess(2035711u, inhert_handle: false, robloxpid);
-                await Task.Delay(100);
-                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
-                {
-                    run_script(intPtr, robloxpid, fluxus_file_path + "\\" + FLUXUS_HWID + ".dll", injectmsg);
-                }
-                else
-                {
-                    run_script(intPtr, robloxpid, fluxus_file_path + "\\" + FLUXUS_HWID + ".dll", injectmsgint);
-                }
-                
-            }
-            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Valyse")
-            {
-                try
-                {
-                    sendnotify("Injecting...");
-                    await Module.Inject();
-                    await Task.Delay(2100);
-                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
+                    catch (Exception)
                     {
-                        Module.Execute(injectmsg);
                     }
-                    else
+                    await Task.Delay(100);
+                    switch (InjectFluxus.inject_legacy(false, fluxus_file_path + "\\" + FLUXUS_HWID + ".dll"))
                     {
-                        Module.Execute(injectmsgint);
+                        case Fluxus_IDE.Injector.Injector.Legacy_Result.AlreadyInjected:
+                            sendnotify("Already injected!");
+                            LogConsole("FluxusAPI is already injected");
+                            break;
+                        case Fluxus_IDE.Injector.Injector.Legacy_Result.DLLNotFound:
+                            sendnotify("DLL not found!");
+                            LogConsole("Injection Failed! DLL not found!\n" + FLUXUS_HWID + ".dll");
+                            break;
+                        case Fluxus_IDE.Injector.Injector.Legacy_Result.OpenProcFail:
+                            sendnotify("Injection Failed!");
+                            LogConsole("Injection Failed - OpenProcFail failed!\n" + FLUXUS_HWID + ".dll");
+                            break;
+                        case Fluxus_IDE.Injector.Injector.Legacy_Result.ProcNotOpen:
+                            sendnotify("Game not opened!");
+                            LogConsole("The game is not open! Please open the game before injecting.");
+                            break;
+                        case Fluxus_IDE.Injector.Injector.Legacy_Result.LoadLibFail:
+                            sendnotify("Failed to load lib");
+                            LogConsole("Injection Failed - LoadLibFail failed!\n" + FLUXUS_HWID + ".dll");
+                            break;
+                        case Fluxus_IDE.Injector.Injector.Legacy_Result.Unknown:
+                            sendnotify("Unknown error");
+                            LogConsole("Injection Failed - Unknown!\n" + FLUXUS_HWID + ".dll");
+                            break;
+                        case Fluxus_IDE.Injector.Injector.Legacy_Result.AllocFail:
+                            LogConsole("Injection Failed - AllocFail failed!\n");
+                            break;
+                        case Fluxus_IDE.Injector.Injector.Legacy_Result.Success:
+                            sendnotify("Injected!");
+                            break;
                     }
                     
                 }
-                catch (Exception ex)
+                else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Valyse")
                 {
-                    LogConsole("Inject error: " + ex);
+                    try
+                    {
+                        await Module.Inject();
+                    }
+                    catch (Exception ex)
+                    {
+                        LogConsole("Inject error: " + ex);
+                    }
                 }
             }
+
+            
         }
         
 
@@ -1724,6 +1751,17 @@ namespace ezsploitv
             }
             MessageBox.Show("restart roblox to take effect! Turn on Auto-Inject for best effect.");
             MessageBox.Show("If you are in game, you can press 'insert' on your keyboard to open/close UI. If nothing is happening try to hit inject button and try again", "How it works?");
+        }
+
+        private void autoexecfolder_Click(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(Environment.GetEnvironmentVariable("LocalAppData") + "\\Packages");
+            FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + "ROBLOXCORPORATION" + "*.*");
+            DirectoryInfo[] dirsInDir = hdDirectoryInWhichToSearch.GetDirectories("*" + "ROBLOXCORPORATION" + "*.*");
+            foreach (DirectoryInfo foundDir in dirsInDir)
+            {
+                Process.Start("explorer.exe", foundDir.FullName + "\\AC\\autoexec");
+            }
         }
     }
 }
