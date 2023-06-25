@@ -63,6 +63,8 @@ C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\obj\Release\ezsploitv.csproj
 C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\obj\Release\ezsploitv.csproj.CopyComplete
 C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\obj\Release\ezsploitv.exe
 C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\obj\Release\ezsploitv.pdb
-C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ValyseAPI.dll
 C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\bin\Release\System.Net.Http.Formatting.dll
 C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\obj\Release\ezsploitv.exe.config
+C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\obj\Release\initial.g.cs
+C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\obj\Release\initial.baml
+C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ValyseAPI.dll

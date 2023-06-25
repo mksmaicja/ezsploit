@@ -206,7 +206,7 @@ namespace ezsploitv
         int jajorandomowe;
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            jajorandomowe = rnd.Next(1, 6);
+            jajorandomowe = rnd.Next(1, 7);
             if (jajorandomowe == 1)
             {
                 randomfacts.Content = "                   fun fact: EzSploit is developed by a kid";
@@ -229,9 +229,12 @@ namespace ezsploitv
             }
             else if (jajorandomowe == 6)
             {
-                randomfacts.Content = "We're no strangers to love You know the rules and so do I";
+                randomfacts.Content = "If you have problems, hit 'redownload' in settings!";
             }
-
+            else if (jajorandomowe == 7)
+            {
+                randomfacts.Content = "If you have problems, hit 'redownload' in settings!";
+            }
             this.Fade(this.MainBorder);
             ObjectShiftPos(MainBorder, MainBorder.Margin, new Thickness(0, 0, 0, 124));
             await Task.Delay(2000);
@@ -290,6 +293,18 @@ namespace ezsploitv
             {
                 File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7text.txt", GetText());
             }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "8")
+            {
+                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script8text.txt", GetText());
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "9")
+            {
+                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script9text.txt", GetText());
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "10")
+            {
+                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script10text.txt", GetText());
+            }
         }
 
         public void readtext()
@@ -321,6 +336,18 @@ namespace ezsploitv
             else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "7")
             {
                 SetText(File.ReadAllText($"c:/mikusdevPrograms/ezsploit/Configs/script7text.txt"));
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "8")
+            {
+                SetText(File.ReadAllText($"c:/mikusdevPrograms/ezsploit/Configs/script8text.txt"));
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "9")
+            {
+                SetText(File.ReadAllText($"c:/mikusdevPrograms/ezsploit/Configs/script9text.txt"));
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "10")
+            {
+                SetText(File.ReadAllText($"c:/mikusdevPrograms/ezsploit/Configs/script10text.txt"));
             }
         }
 
@@ -509,6 +536,9 @@ namespace ezsploitv
                 script5.Background = System.Windows.Media.Brushes.Black;
                 script6.Background = System.Windows.Media.Brushes.Black;
                 script7.Background = System.Windows.Media.Brushes.Black;
+                script8.Background = System.Windows.Media.Brushes.Black;
+                script9.Background = System.Windows.Media.Brushes.Black;
+                script10.Background = System.Windows.Media.Brushes.Black;
             }
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "2")
             {
@@ -519,6 +549,9 @@ namespace ezsploitv
                 script5.Background = System.Windows.Media.Brushes.Black;
                 script6.Background = System.Windows.Media.Brushes.Black;
                 script7.Background = System.Windows.Media.Brushes.Black;
+                script8.Background = System.Windows.Media.Brushes.Black;
+                script9.Background = System.Windows.Media.Brushes.Black;
+                script10.Background = System.Windows.Media.Brushes.Black;
             }
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "3")
             {
@@ -529,6 +562,9 @@ namespace ezsploitv
                 script5.Background = System.Windows.Media.Brushes.Black;
                 script6.Background = System.Windows.Media.Brushes.Black;
                 script7.Background = System.Windows.Media.Brushes.Black;
+                script8.Background = System.Windows.Media.Brushes.Black;
+                script9.Background = System.Windows.Media.Brushes.Black;
+                script10.Background = System.Windows.Media.Brushes.Black;
             }
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "4")
             {
@@ -539,6 +575,9 @@ namespace ezsploitv
                 script5.Background = System.Windows.Media.Brushes.Black;
                 script6.Background = System.Windows.Media.Brushes.Black;
                 script7.Background = System.Windows.Media.Brushes.Black;
+                script8.Background = System.Windows.Media.Brushes.Black;
+                script9.Background = System.Windows.Media.Brushes.Black;
+                script10.Background = System.Windows.Media.Brushes.Black;
             }
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "5")
             {
@@ -549,6 +588,9 @@ namespace ezsploitv
                 script1.Background = System.Windows.Media.Brushes.Black;
                 script6.Background = System.Windows.Media.Brushes.Black;
                 script7.Background = System.Windows.Media.Brushes.Black;
+                script8.Background = System.Windows.Media.Brushes.Black;
+                script9.Background = System.Windows.Media.Brushes.Black;
+                script10.Background = System.Windows.Media.Brushes.Black;
             }
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "6")
             {
@@ -559,6 +601,9 @@ namespace ezsploitv
                 script5.Background = System.Windows.Media.Brushes.Black;
                 script1.Background = System.Windows.Media.Brushes.Black;
                 script7.Background = System.Windows.Media.Brushes.Black;
+                script8.Background = System.Windows.Media.Brushes.Black;
+                script9.Background = System.Windows.Media.Brushes.Black;
+                script10.Background = System.Windows.Media.Brushes.Black;
             }
             if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "7")
             {
@@ -569,6 +614,48 @@ namespace ezsploitv
                 script5.Background = System.Windows.Media.Brushes.Black;
                 script6.Background = System.Windows.Media.Brushes.Black;
                 script1.Background = System.Windows.Media.Brushes.Black;
+                script8.Background = System.Windows.Media.Brushes.Black;
+                script9.Background = System.Windows.Media.Brushes.Black;
+                script10.Background = System.Windows.Media.Brushes.Black;
+            }
+            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "8")
+            {
+                script8.Background = System.Windows.Media.Brushes.Gray;
+                script2.Background = System.Windows.Media.Brushes.Black;
+                script3.Background = System.Windows.Media.Brushes.Black;
+                script4.Background = System.Windows.Media.Brushes.Black;
+                script5.Background = System.Windows.Media.Brushes.Black;
+                script6.Background = System.Windows.Media.Brushes.Black;
+                script1.Background = System.Windows.Media.Brushes.Black;
+                script7.Background = System.Windows.Media.Brushes.Black;
+                script9.Background = System.Windows.Media.Brushes.Black;
+                script10.Background = System.Windows.Media.Brushes.Black;
+            }
+            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "9")
+            {
+                script9.Background = System.Windows.Media.Brushes.Gray;
+                script2.Background = System.Windows.Media.Brushes.Black;
+                script3.Background = System.Windows.Media.Brushes.Black;
+                script4.Background = System.Windows.Media.Brushes.Black;
+                script5.Background = System.Windows.Media.Brushes.Black;
+                script6.Background = System.Windows.Media.Brushes.Black;
+                script1.Background = System.Windows.Media.Brushes.Black;
+                script8.Background = System.Windows.Media.Brushes.Black;
+                script7.Background = System.Windows.Media.Brushes.Black;
+                script10.Background = System.Windows.Media.Brushes.Black;
+            }
+            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "10")
+            {
+                script10.Background = System.Windows.Media.Brushes.Gray;
+                script2.Background = System.Windows.Media.Brushes.Black;
+                script3.Background = System.Windows.Media.Brushes.Black;
+                script4.Background = System.Windows.Media.Brushes.Black;
+                script5.Background = System.Windows.Media.Brushes.Black;
+                script6.Background = System.Windows.Media.Brushes.Black;
+                script1.Background = System.Windows.Media.Brushes.Black;
+                script8.Background = System.Windows.Media.Brushes.Black;
+                script9.Background = System.Windows.Media.Brushes.Black;
+                script7.Background = System.Windows.Media.Brushes.Black;
             }
         }
 
@@ -639,152 +726,230 @@ namespace ezsploitv
         {
             savetext();
 
-
-            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script2.txt") == "off")
+            try
             {
-                script2.Visibility = Visibility.Visible;
-                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "2");
-                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script2.txt", "on");
-                SetText("");
-            }
-            else
-            {
-                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script3.txt") == "off")
+                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script2.txt") == "off")
                 {
-                    script3.Visibility = Visibility.Visible;
-                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "3");
-                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script3.txt", "on");
+                    script2.Visibility = Visibility.Visible;
+                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "2");
+                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script2.txt", "on");
                     SetText("");
                 }
                 else
                 {
-                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script4.txt") == "off")
+                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script3.txt") == "off")
                     {
-                        script4.Visibility = Visibility.Visible;
-                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "4");
-                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script4.txt", "on");
+                        script3.Visibility = Visibility.Visible;
+                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "3");
+                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script3.txt", "on");
                         SetText("");
                     }
                     else
                     {
-                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script5.txt") == "off")
+                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script4.txt") == "off")
                         {
-                            script5.Visibility = Visibility.Visible;
-                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "5");
-                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script5.txt", "on");
+                            script4.Visibility = Visibility.Visible;
+                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "4");
+                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script4.txt", "on");
                             SetText("");
                         }
                         else
                         {
-                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script6.txt") == "off")
+                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script5.txt") == "off")
                             {
-                                script6.Visibility = Visibility.Visible;
-                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "6");
-                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script6.txt", "on");
+                                script5.Visibility = Visibility.Visible;
+                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "5");
+                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script5.txt", "on");
                                 SetText("");
                             }
                             else
                             {
-                                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7.txt") == "off")
+                                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script6.txt") == "off")
                                 {
-                                    script7.Visibility = Visibility.Visible;
-                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "7");
-                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7.txt", "on");
+                                    script6.Visibility = Visibility.Visible;
+                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "6");
+                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script6.txt", "on");
                                     SetText("");
                                 }
                                 else
                                 {
-                                    sendnotify("max amount of script tabs is 7");
+                                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7.txt") == "off")
+                                    {
+                                        script7.Visibility = Visibility.Visible;
+                                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "7");
+                                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7.txt", "on");
+                                        SetText("");
+                                    }
+                                    else
+                                    {
+                                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script8.txt") == "off")
+                                        {
+                                            script8.Visibility = Visibility.Visible;
+                                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "8");
+                                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script8.txt", "on");
+                                            SetText("");
+                                        }
+                                        else
+                                        {
+                                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script9.txt") == "off")
+                                            {
+                                                script9.Visibility = Visibility.Visible;
+                                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "9");
+                                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script9.txt", "on");
+                                                SetText("");
+                                            }
+                                            else
+                                            {
+                                                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script10.txt") == "off")
+                                                {
+                                                    script10.Visibility = Visibility.Visible;
+                                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "10");
+                                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script10.txt", "on");
+                                                    SetText("");
+                                                }
+                                                else
+                                                {
+                                                    sendnotify("max amount of script tabs is 10");
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("tab system error! hit 'Fix Update' button in settings to fix. \r Error reason: Tab system got update and it need re-configuration");
             }
             selectedtabcol();
         }
 
         private void remtab_Click(object sender, RoutedEventArgs e)
         {
-            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7.txt") == "on")
+            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script10.txt") == "on")
             {
-                script7.Visibility = Visibility.Hidden;
-                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7.txt", "off");
-                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7text.txt", "");
-                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "7")
+                script10.Visibility = Visibility.Hidden;
+                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script10.txt", "off");
+                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script10text.txt", "");
+                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "10")
                 {
-                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "6");
+                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "9");
                     readtext();
                 }
             }
             else
             {
-                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script6.txt") == "on")
+                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script9.txt") == "on")
                 {
-                    script6.Visibility = Visibility.Hidden;
-                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script6.txt", "off");
-                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script6text.txt", "");
-                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "6")
+                    script9.Visibility = Visibility.Hidden;
+                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script9.txt", "off");
+                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script9text.txt", "");
+                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "9")
                     {
-                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "5");
+                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "8");
                         readtext();
                     }
                 }
                 else
                 {
-                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script5.txt") == "on")
+                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script8.txt") == "on")
                     {
-                        script5.Visibility = Visibility.Hidden;
-                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script5.txt", "off");
-                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script5text.txt", "");
-                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "5")
+                        script8.Visibility = Visibility.Hidden;
+                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script8.txt", "off");
+                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script8text.txt", "");
+                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "8")
                         {
-                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "4");
+                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "7");
                             readtext();
                         }
                     }
                     else
                     {
-                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script4.txt") == "on")
+                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7.txt") == "on")
                         {
-                            script4.Visibility = Visibility.Hidden;
-                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script4.txt", "off");
-                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script4text.txt", "");
-                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "4")
+                            script7.Visibility = Visibility.Hidden;
+                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7.txt", "off");
+                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7text.txt", "");
+                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "7")
                             {
-                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "3");
+                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "6");
                                 readtext();
                             }
                         }
                         else
                         {
-                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script3.txt") == "on")
+                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script6.txt") == "on")
                             {
-                                script3.Visibility = Visibility.Hidden;
-                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script3.txt", "off");
-                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script3text.txt", "");
-                                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "3")
+                                script6.Visibility = Visibility.Hidden;
+                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script6.txt", "off");
+                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script6text.txt", "");
+                                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "6")
                                 {
-                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "2");
+                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "5");
                                     readtext();
                                 }
                             }
                             else
                             {
-                                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script2.txt") == "on")
+                                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script5.txt") == "on")
                                 {
-                                    script2.Visibility = Visibility.Hidden;
-                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script2.txt", "off");
-                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script2text.txt", "");
-                                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "2")
+                                    script5.Visibility = Visibility.Hidden;
+                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script5.txt", "off");
+                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script5text.txt", "");
+                                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "5")
                                     {
-                                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "1");
+                                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "4");
                                         readtext();
                                     }
                                 }
                                 else
                                 {
-                                    sendnotify("You can't delete script1");
+                                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script4.txt") == "on")
+                                    {
+                                        script4.Visibility = Visibility.Hidden;
+                                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script4.txt", "off");
+                                        File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script4text.txt", "");
+                                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "4")
+                                        {
+                                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "3");
+                                            readtext();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script3.txt") == "on")
+                                        {
+                                            script3.Visibility = Visibility.Hidden;
+                                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script3.txt", "off");
+                                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script3text.txt", "");
+                                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "3")
+                                            {
+                                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "2");
+                                                readtext();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script2.txt") == "on")
+                                            {
+                                                script2.Visibility = Visibility.Hidden;
+                                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script2.txt", "off");
+                                                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script2text.txt", "");
+                                                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt") == "2")
+                                                {
+                                                    File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "1");
+                                                    readtext();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                sendnotify("You can't delete script1");
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -893,17 +1058,50 @@ namespace ezsploitv
                                 if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script7.txt") == "on")
                                 {
                                     script7.Visibility = Visibility.Visible;
+                                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script8.txt") == "on")
+                                    {
+                                        script8.Visibility = Visibility.Visible;
+                                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script9.txt") == "on")
+                                        {
+                                            script9.Visibility = Visibility.Visible;
+                                            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\script10.txt") == "on")
+                                            {
+                                                script10.Visibility = Visibility.Visible;
 
+                                            }
+                                            else
+                                            {
+                                                script10.Visibility = Visibility.Hidden;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            script10.Visibility = Visibility.Hidden;
+                                            script9.Visibility = Visibility.Hidden;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        script10.Visibility = Visibility.Hidden;
+                                        script9.Visibility = Visibility.Hidden;
+                                        script8.Visibility = Visibility.Hidden;
+                                    }
                                 }
                                 else
                                 {
                                     script7.Visibility = Visibility.Hidden;
+                                    script10.Visibility = Visibility.Hidden;
+                                    script9.Visibility = Visibility.Hidden;
+                                    script8.Visibility = Visibility.Hidden;
                                 }
                             }
                             else
                             {
                                 script6.Visibility = Visibility.Hidden;
                                 script7.Visibility = Visibility.Hidden;
+                                script10.Visibility = Visibility.Hidden;
+                                script9.Visibility = Visibility.Hidden;
+                                script8.Visibility = Visibility.Hidden;
                             }
                         }
                         else
@@ -911,6 +1109,9 @@ namespace ezsploitv
                             script5.Visibility = Visibility.Hidden;
                             script6.Visibility = Visibility.Hidden;
                             script7.Visibility = Visibility.Hidden;
+                            script10.Visibility = Visibility.Hidden;
+                            script9.Visibility = Visibility.Hidden;
+                            script8.Visibility = Visibility.Hidden;
                         }
                     }
                     else
@@ -919,6 +1120,9 @@ namespace ezsploitv
                         script5.Visibility = Visibility.Hidden;
                         script6.Visibility = Visibility.Hidden;
                         script7.Visibility = Visibility.Hidden;
+                        script10.Visibility = Visibility.Hidden;
+                        script9.Visibility = Visibility.Hidden;
+                        script8.Visibility = Visibility.Hidden;
                     }
                 }
                 else
@@ -928,6 +1132,9 @@ namespace ezsploitv
                     script5.Visibility = Visibility.Hidden;
                     script6.Visibility = Visibility.Hidden;
                     script7.Visibility = Visibility.Hidden;
+                    script10.Visibility = Visibility.Hidden;
+                    script9.Visibility = Visibility.Hidden;
+                    script8.Visibility = Visibility.Hidden;
                 }
             }
             else
@@ -938,6 +1145,9 @@ namespace ezsploitv
                 script5.Visibility = Visibility.Hidden;
                 script6.Visibility = Visibility.Hidden;
                 script7.Visibility = Visibility.Hidden;
+                script10.Visibility = Visibility.Hidden;
+                script9.Visibility = Visibility.Hidden;
+                script8.Visibility = Visibility.Hidden;
             }
             selectedtabcol();
 
@@ -1288,43 +1498,41 @@ namespace ezsploitv
             {
                 sendnotify("Injecting...");
 
-                injectmsg = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/gejinject.lua\", true))()";
+                
                 injectmsgint = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/getinjectinternal.lua\", true))()";
-                DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(Environment.GetEnvironmentVariable("LocalAppData") + "\\Packages");
-                FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + "ROBLOXCORPORATION" + "*.*");
-                DirectoryInfo[] dirsInDir = hdDirectoryInWhichToSearch.GetDirectories("*" + "ROBLOXCORPORATION" + "*.*");
+                try
+                {
+                    DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(Environment.GetEnvironmentVariable("LocalAppData") + "\\Packages");
+                    FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + "ROBLOXCORPORATION" + "*.*");
+                    DirectoryInfo[] dirsInDir = hdDirectoryInWhichToSearch.GetDirectories("*" + "ROBLOXCORPORATION" + "*.*");
 
-                foreach (DirectoryInfo foundDir in dirsInDir)
-                {
-                    autoexecfolder = foundDir.FullName + "\\AC\\autoexec";
+                    foreach (DirectoryInfo foundDir in dirsInDir)
+                    {
+                        autoexecfolder = foundDir.FullName + "\\AC\\autoexec";
+                    }
+                    await Task.Delay(40);
+                    if (!File.Exists(autoexecfolder + "\\ezsploitinject.lua"))
+                    {
+                        using (FileStream fs = File.Create(autoexecfolder + "\\ezsploitinject.lua")) { }
+                    }
+                    await Task.Delay(40);
+                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
+                    {
+                        File.Delete(autoexecfolder + "\\ezsploitinject.lua");
+                    }
+                    else
+                    {
+                        File.WriteAllText(autoexecfolder + "\\ezsploitinject.lua", injectmsgint);
+                    }
                 }
-                await Task.Delay(40);
-                if (!File.Exists(autoexecfolder + "\\ezsploitinject.lua"))
+                catch (Exception ex)
                 {
-                    using (FileStream fs = File.Create(autoexecfolder + "\\ezsploitinject.lua")) { }
-                }
-                await Task.Delay(40);
-                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\isinternal.txt") == "no")
-                {
-                    File.WriteAllText(autoexecfolder + "\\ezsploitinject.lua", injectmsg);
-                }
-                else
-                {
-                    File.WriteAllText(autoexecfolder + "\\ezsploitinject.lua", injectmsgint);
+                    LogConsole("Failed to create inject message: " + ex);
                 }
 
                 if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
                 {
-                    if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Module.dll"))
-                    {
-                        LogConsole("Downloading API deps...");
-                        webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/Module.dll", "c:\\mikusdevPrograms\\ezsploit\\Module.dll");
-                    }
-                    if (!File.Exists("c:\\mikusdevPrograms\\ezsploit\\Fluxteam_net_API.dll"))
-                    {
-                        LogConsole("Downloading API deps...");
-                        webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/Fluxteam_net_API.dll", "c:\\mikusdevPrograms\\ezsploit\\Fluxteam_net_API.dll");
-                    }
+                    
                     await Task.Delay(40);
                     try
                     {
@@ -1415,9 +1623,9 @@ namespace ezsploitv
 
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-
+                        LogConsole("Comet: Inject error!: " + ex);
                     }
 
                 }
@@ -1762,6 +1970,33 @@ namespace ezsploitv
             {
                 Process.Start("explorer.exe", foundDir.FullName + "\\AC\\autoexec");
             }
+        }
+
+        private void script8_Click(object sender, RoutedEventArgs e)
+        {
+            savetext();
+
+            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "8");
+            SetText(File.ReadAllText($"c:/mikusdevPrograms/ezsploit/Configs/script8text.txt"));
+            selectedtabcol();
+        }
+
+        private void script9_Click(object sender, RoutedEventArgs e)
+        {
+            savetext();
+
+            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "9");
+            SetText(File.ReadAllText($"c:/mikusdevPrograms/ezsploit/Configs/script9text.txt"));
+            selectedtabcol();
+        }
+
+        private void script10_Click(object sender, RoutedEventArgs e)
+        {
+            savetext();
+
+            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "10");
+            SetText(File.ReadAllText($"c:/mikusdevPrograms/ezsploit/Configs/script10text.txt"));
+            selectedtabcol();
         }
     }
 }

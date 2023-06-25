@@ -1,0 +1,18 @@
+﻿<Window x:Class="ezsploitv.initial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ezsploitv"
+        mc:Ignorable="d"
+        Title="Launcher" Height="388" Width="458" Background="{x:Null}" Foreground="{x:Null}" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border BorderThickness="1" Loaded="Border_Loaded">
+            <Grid Margin="0,0,-2,-2">
+                <Label x:Name="textlabel" Content="Checking dlls..." Margin="0,255,0,0" Foreground="White" FontWeight="Bold" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" Width="458" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Image Height="170" Width="170" Margin="0,85,0,133" Source="/ezsploit5.png" HorizontalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

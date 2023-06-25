@@ -90,7 +90,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Fluxus_IDE.Injector\Injector.cs" />
+    <Compile Include="initial.xaml.cs">
+      <DependentUpon>initial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RBXMSEAPI.Classes\fluxteam_net_api.cs" />
+    <Page Include="initial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -183,7 +190,9 @@
   <ItemGroup>
     <None Include="Resources\10_10_10.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="ezsploit5.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1774.30\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1774.30\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

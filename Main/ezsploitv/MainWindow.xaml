@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:ezsploitv"
         xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Name="window" x:Class="ezsploitv.MainWindow"
         mc:Ignorable="d"
-        Title="EzSploit V 6.6 - By mikusdev" Height="570" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen">
+        Title="EzSploit V 6.6 - By mikusdev" Height="570" Width="800" Background="Transparent" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen" WindowStyle="None" Icon="/ezsploit5.png" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid x:Name="chujnia">
         <Grid x:Name="MainGrid" Loaded="Grid_Loaded" Width="800">
             <Border x:Name="HomeBorder" BorderBrush="Black" BorderThickness="0" CornerRadius="8" Background="#FF0A0A0A" Width="800" Height="450" Margin="0,0,0,120">
@@ -114,7 +114,7 @@
                         </Grid>
                         <Grid x:Name="Grid1" Margin="64,44,0,0" Loaded="Grid1_Loaded" KeyUp="Grid1_KeyUp" d:IsHidden="True">
                             <Grid x:Name="TabSystem" Margin="0,0,10,373">
-                                <Button x:Name="script1" Content="Script1" Foreground="White" FontSize="16" Click="script1_Click" RenderTransformOrigin="0.672,1.813" Margin="10,14,633,0" BorderBrush="#FF191919" Background="#FF141414" Height="23">
+                                <Button x:Name="script1" Content="Script1" Foreground="White" FontSize="16" Click="script1_Click" RenderTransformOrigin="0.672,1.813" Margin="10,14,663,0" BorderBrush="#FF191919" Background="#FF141414" Height="23" HorizontalAlignment="Left">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="4" />
@@ -124,7 +124,7 @@
 
                                     </Button.Resources>
                                 </Button>
-                                <Button x:Name="script2" Content="Script2" Foreground="White" FontSize="16" Click="script2_Click" RenderTransformOrigin="0.672,1.813" Margin="98,14,545,0" BorderBrush="#FF191919" Height="23" VerticalAlignment="Top" Background="#FF141414">
+                                <Button x:Name="script2" Content="Script2" Foreground="White" FontSize="16" Click="script2_Click" RenderTransformOrigin="0.672,1.813" Margin="68,14,0,0" BorderBrush="#FF191919" Height="23" VerticalAlignment="Top" Background="#FF141414" HorizontalAlignment="Left" HorizontalContentAlignment="Center">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="4" />
@@ -134,7 +134,7 @@
 
                                     </Button.Resources>
                                 </Button>
-                                <Button x:Name="script3" Content="Script3" Foreground="White" FontSize="16" Click="script3_Click" RenderTransformOrigin="0.672,1.813" Margin="181,14,462,0" BorderBrush="#FF191919" Background="#FF141414" Height="23">
+                                <Button x:Name="script3" Content="Script3" Foreground="White" FontSize="16" Click="script3_Click" RenderTransformOrigin="0.672,1.813" Margin="126,14,0,0" BorderBrush="#FF191919" Background="#FF141414" Height="23" HorizontalAlignment="Left">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="4" />
@@ -144,7 +144,7 @@
 
                                     </Button.Resources>
                                 </Button>
-                                <Button x:Name="script4" Content="Script4" Foreground="White" FontSize="16" Click="script4_Click" RenderTransformOrigin="0.672,1.813" Margin="264,14,379,0" BorderBrush="#FF191919" Height="23" VerticalAlignment="Top" Background="#FF141414">
+                                <Button x:Name="script4" Content="Script4" Foreground="White" FontSize="16" Click="script4_Click" RenderTransformOrigin="0.672,1.813" Margin="184,14,0,0" BorderBrush="#FF191919" Height="23" VerticalAlignment="Top" Background="#FF141414" HorizontalAlignment="Left">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="4" />
@@ -154,7 +154,7 @@
 
                                     </Button.Resources>
                                 </Button>
-                                <Button x:Name="script5" Content="Script5" Foreground="White" FontSize="16" Click="script5_Click" RenderTransformOrigin="0.672,1.813" Margin="347,14,296,0" BorderBrush="#FF191919" Background="#FF141414" Height="23">
+                                <Button x:Name="script5" Content="Script5" Foreground="White" FontSize="16" Click="script5_Click" RenderTransformOrigin="0.672,1.813" Margin="242,14,0,0" BorderBrush="#FF191919" Background="#FF141414" Height="23" HorizontalAlignment="Left">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="4" />
@@ -164,7 +164,7 @@
 
                                     </Button.Resources>
                                 </Button>
-                                <Button x:Name="script6" Content="Script6" Foreground="White" FontSize="16" Click="script6_Click" RenderTransformOrigin="0.672,1.813" Margin="430,14,213,0" BorderBrush="#FF191919" Height="23" VerticalAlignment="Top" Background="#FF141414">
+                                <Button x:Name="script6" Content="Script6" Foreground="White" FontSize="16" Click="script6_Click" RenderTransformOrigin="0.672,1.813" Margin="300,14,0,0" BorderBrush="#FF191919" Height="23" VerticalAlignment="Top" Background="#FF141414" HorizontalAlignment="Left">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="4" />
@@ -174,7 +174,7 @@
 
                                     </Button.Resources>
                                 </Button>
-                                <Button x:Name="script7" Content="Script7" Foreground="White" FontSize="16" Click="script7_Click" RenderTransformOrigin="0.672,1.813" Margin="513,14,130,0" BorderBrush="#FF191919" Background="#FF141414" Height="23">
+                                <Button x:Name="script7" Content="Script7" Foreground="White" FontSize="16" Click="script7_Click" RenderTransformOrigin="0.672,1.813" Margin="363,14,0,0" BorderBrush="#FF191919" Background="#FF141414" Height="23" HorizontalAlignment="Left">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="4" />
@@ -209,6 +209,36 @@
                                     <Button.Background>
                                         <ImageBrush ImageSource="/minus.png"/>
                                     </Button.Background>
+                                </Button>
+                                <Button x:Name="script8" Content="Script8" Foreground="White" FontSize="16" Click="script8_Click" RenderTransformOrigin="0.672,1.813" Margin="421,14,0,0" BorderBrush="#FF191919" Background="#FF141414" Height="23" HorizontalAlignment="Left">
+                                    <Button.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="4" />
+
+
+                                        </Style>
+
+                                    </Button.Resources>
+                                </Button>
+                                <Button x:Name="script9" Content="Script9" Foreground="White" FontSize="16" Click="script9_Click" RenderTransformOrigin="0.672,1.813" Margin="479,14,0,0" BorderBrush="#FF191919" Height="23" VerticalAlignment="Top" Background="#FF141414" HorizontalAlignment="Left">
+                                    <Button.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="4" />
+
+
+                                        </Style>
+
+                                    </Button.Resources>
+                                </Button>
+                                <Button x:Name="script10" Content="Script10" Foreground="White" FontSize="16" Click="script10_Click" RenderTransformOrigin="0.672,1.813" Margin="537,14,0,0" BorderBrush="#FF191919" Background="#FF141414" Height="23" HorizontalAlignment="Left">
+                                    <Button.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="4" />
+
+
+                                        </Style>
+
+                                    </Button.Resources>
                                 </Button>
                             </Grid>
 
@@ -428,7 +458,7 @@
                     </Grid>
                 </Grid>
             </Border>
-            <Border x:Name="MainBorder" BorderBrush="Black" BorderThickness="1" CornerRadius="8" Margin="278,152,278,152" Height="NaN" Width="NaN" Background="Black" Opacity="0.5" d:IsHidden="True">
+            <Border x:Name="MainBorder" BorderBrush="Black" BorderThickness="1" CornerRadius="8" Margin="278,152,278,152" Height="NaN" Width="NaN" Background="Black" Opacity="0.5">
                 <Grid x:Name="startup">
                     <Image Margin="25,29,120,37" Source="/ezv5.ico" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <Image.RenderTransform>

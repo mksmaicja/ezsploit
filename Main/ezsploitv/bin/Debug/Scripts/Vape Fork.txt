@@ -1,0 +1,5 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/mikusgszyp/VapeV4_roblox_extrenal/main/NewMainScript.lua", true))()
+
+--[[
+    VAPE FORK BY MIKUSDEV
+--]]
