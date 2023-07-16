@@ -1,3 +1,2 @@
-2023/06/24-15:27:15.820 36dc Reusing MANIFEST C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ezsploitv.exe.WebView2\EBWebView\Default\Session Storage/MANIFEST-000001
-2023/06/24-15:27:15.821 36dc Recovering log #3
-2023/06/24-15:27:15.826 36dc Reusing old log C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ezsploitv.exe.WebView2\EBWebView\Default\Session Storage/000003.log 
+2023/07/04-19:45:47.106 58a0 Creating DB C:\Users\mikqr\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ezsploitv.exe.WebView2\EBWebView\Default\Session Storage since it was missing.
+2023/07/04-19:45:47.136 58a0 Reusing MANIFEST C:\Users\mikqr\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ezsploitv.exe.WebView2\EBWebView\Default\Session Storage/MANIFEST-000001

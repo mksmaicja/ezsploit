@@ -38,7 +38,7 @@ namespace EzSploit_Updater_V2
             try
             {
                 Console.WriteLine("Checking internet connection...");
-                string iswebavible = webClient.DownloadString("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/versionew.txt");
+                string iswebavible = webClient.DownloadString("http://dziecizautyzmem.ovh/EzSploit/versionew.txt");
                 Console.WriteLine("Updating...");
                 try
                 {
@@ -57,13 +57,13 @@ namespace EzSploit_Updater_V2
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 if (Directory.Exists(configsfolder))
                 {
-                    webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/EzSploitV4.exe", @"c:\mikusdevPrograms\ezsploit\EzSploitV4.exe");
+                    webClient.DownloadFile("http://dziecizautyzmem.ovh/EzSploit/EzSploitV4.exe", @"c:\mikusdevPrograms\ezsploit\EzSploitV4.exe");
                 }
                 else
                 {
                     DirectoryInfo di = Directory.CreateDirectory(@"c:\mikusdevPrograms\ezsploit");
 
-                    webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/EzSploitV4.exe", @"c:\mikusdevPrograms\ezsploit\EzSploitV4.exe");
+                    webClient.DownloadFile("http://dziecizautyzmem.ovh/EzSploit/EzSploitV4.exe", @"c:\mikusdevPrograms\ezsploit\EzSploitV4.exe");
                 }
 
 

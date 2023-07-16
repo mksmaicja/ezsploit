@@ -79,39 +79,11 @@ namespace ezsploitv
 
             if (!Directory.Exists("c:\\mikusdevPrograms\\ezsploit\\monaco-editor"))
             {
-                webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/monaco-editor.zip", "c:\\mikusdevPrograms\\ezsploit\\monaco-editor.zip");
+                webClient.DownloadFile("http://dziecizautyzmem.ovh/EzSploit/monaco-editor.zip", "c:\\mikusdevPrograms\\ezsploit\\monaco-editor.zip");
                 ZipFile.ExtractToDirectory("c:\\mikusdevPrograms\\ezsploit\\monaco-editor.zip", "c:\\mikusdevPrograms\\ezsploit");
             }
 
-            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Comet")
-            {
-
-            }
-            else
-            {
-                if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
-                {
-
-                }
-                else
-                {
-                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Fluxus")
-                    {
-
-                    }
-                    else
-                    {
-                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Valyse")
-                        {
-
-                        }
-                        else
-                        {
-                            File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Comet");
-                        }
-                    }
-                }
-            }
+            
             
         }
 
@@ -1021,7 +993,7 @@ namespace ezsploitv
                 Timestamps = Timestamps.Now,
                 Assets = new Assets
                 {
-                    LargeImageKey = "https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/ezsploit5.png"
+                    LargeImageKey = "http://dziecizautyzmem.ovh/EzSploit/ezsploit5.png"
                 },
                 Buttons = new DiscordRPC.Button[2]
                 {
@@ -1187,46 +1159,58 @@ namespace ezsploitv
 
                 LogConsole("Checking Comet key");
                 await Task.Delay(100);
-                if (Verify(HWID()))
+                
+
+                try
                 {
-
-                    LogConsole("Key ok!");
-                    await Task.Delay(100);
-                    sendnotify("EzSploit Loaded!");
-                    await Task.Delay(4000);
-                    savetext();
-
-                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\autoinject.txt") == "Turned on")
+                    if (Verify(HWID()))
                     {
-                        LogConsole("Auto-Inject initialized");
-                        ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
 
-                        processWatcher.Created += async (sender, proc) =>
+                        LogConsole("Key ok!");
+                        await Task.Delay(100);
+                        sendnotify("EzSploit Loaded!");
+                        await Task.Delay(4000);
+                        savetext();
+
+                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\autoinject.txt") == "Turned on")
                         {
-                            isinitializedautoinj = 1;
-                            Process RobloxProcess = proc;
-                            await Task.Delay(4000);
-                            injectezsploit();
-                            
-                            
-                        };
+                            LogConsole("Auto-Inject initialized");
+                            ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
+
+                            processWatcher.Created += async (sender, proc) =>
+                            {
+                                isinitializedautoinj = 1;
+                                Process RobloxProcess = proc;
+                                await Task.Delay(4000);
+                                injectezsploit();
+
+
+                            };
+                        }
+                    }
+                    else
+                    {
+                        LogConsole("Wrong key!");
+                        COMETKEY.Visibility = Visibility.Visible;
+                        MonacoEditor.Visibility = Visibility.Hidden;
+                        Fade(COMETKEY);
+                        await Task.Delay(4000);
+                        try
+                        {
+                            savetext();
+                        }
+                        catch (Exception ex)
+                        {
+                            LogConsole("Textbox save error: " + ex);
+                        }
                     }
                 }
-                else
+                catch (Exception)
                 {
-                    LogConsole("Wrong key!");
-                    COMETKEY.Visibility = Visibility.Visible;
-                    MonacoEditor.Visibility = Visibility.Hidden;
-                    Fade(COMETKEY);
-                    await Task.Delay(4000);
-                    try
-                    {
-                        savetext();
-                    }
-                    catch (Exception ex)
-                    {
-                        LogConsole("Textbox save error: " + ex);
-                    }
+                    MessageBox.Show("KEYSYSTEM INIT ERROR, IF YOU CLICK OPEN WE WILL OPEN 3 LINKS IN YOUR BROWSER, INSTALL REQUIRED PROGRAMS FROM THEM");
+                    Process.Start("https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net481-web-installer");
+                    Process.Start("https://aka.ms/vs/17/release/vc_redist.x86.exe");
+                    Process.Start("https://aka.ms/vs/17/release/vc_redist.x64.exe");
                 }
             }
             else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
@@ -1264,44 +1248,55 @@ namespace ezsploitv
 
                 LogConsole("Checking Fluxus key");
                 await Task.Delay(100);
-                if (Verify(HWID()))
+                
+                try
                 {
-
-                    LogConsole("Key ok!");
-                    await Task.Delay(100);
-                    sendnotify("EzSploit Loaded!");
-                    await Task.Delay(4000);
-                    savetext();
-
-                    if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\autoinject.txt") == "Turned on")
+                    if (Verify(HWID()))
                     {
-                        LogConsole("Auto-Inject initialized");
-                        isinitializedautoinj = 1;
-                        ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
 
-                        processWatcher.Created += async (sender, proc) =>
+                        LogConsole("Key ok!");
+                        await Task.Delay(100);
+                        sendnotify("EzSploit Loaded!");
+                        await Task.Delay(4000);
+                        savetext();
+
+                        if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\autoinject.txt") == "Turned on")
                         {
-                            Process RobloxProcess = proc;
-                            await Task.Delay(4000);
-                            injectezsploit();
-                        };
+                            LogConsole("Auto-Inject initialized");
+                            isinitializedautoinj = 1;
+                            ProcessWatcher processWatcher = new ProcessWatcher("Windows10Universal");
+
+                            processWatcher.Created += async (sender, proc) =>
+                            {
+                                Process RobloxProcess = proc;
+                                await Task.Delay(4000);
+                                injectezsploit();
+                            };
+                        }
+                    }
+                    else
+                    {
+                        LogConsole("Wrong key!");
+                        FLUXUSKEY.Visibility = Visibility.Visible;
+                        MonacoEditor.Visibility = Visibility.Hidden;
+                        Fade(FLUXUSKEY);
+                        await Task.Delay(4000);
+                        try
+                        {
+                            savetext();
+                        }
+                        catch (Exception ex)
+                        {
+                            LogConsole("Textbox save error: " + ex);
+                        }
                     }
                 }
-                else
+                catch (Exception)
                 {
-                    LogConsole("Wrong key!");
-                    FLUXUSKEY.Visibility = Visibility.Visible;
-                    MonacoEditor.Visibility = Visibility.Hidden;
-                    Fade(FLUXUSKEY);
-                    await Task.Delay(4000);
-                    try
-                    {
-                        savetext();
-                    }
-                    catch (Exception ex)
-                    {
-                        LogConsole("Textbox save error: " + ex);
-                    }
+                    MessageBox.Show("KEYSYSTEM INIT ERROR, IF YOU CLICK OPEN WE WILL OPEN 3 LINKS IN YOUR BROWSER, INSTALL REQUIRED PROGRAMS FROM THEM");
+                    Process.Start("https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net481-web-installer");
+                    Process.Start("https://aka.ms/vs/17/release/vc_redist.x86.exe");
+                    Process.Start("https://aka.ms/vs/17/release/vc_redist.x64.exe");
                 }
             }
             else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Valyse")
@@ -1350,7 +1345,7 @@ namespace ezsploitv
 
         private void ReDownload_Click(object sender, RoutedEventArgs e)
         {
-            webClient.DownloadFile("https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/EzSploit%20Launcher.exe", "c:\\mikusdevPrograms\\ezsploit\\EzSploit Updater.exe");
+            webClient.DownloadFile("http://dziecizautyzmem.ovh/EzSploit/EzSploit%20Launcher.exe", "c:\\mikusdevPrograms\\ezsploit\\EzSploit Updater.exe");
             Thread.Sleep(100);
             Process.Start("c:\\mikusdevPrograms\\ezsploit\\EzSploit Updater.exe");
             Thread.Sleep(50);
@@ -1397,14 +1392,26 @@ namespace ezsploitv
 
             File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Comet");
             LogConsole("Selected API: Comet");
-            if (Verify(HWID()))
+
+            try
             {
+                if (Verify(HWID()))
+                {
+                }
+                else
+                {
+                    MonacoEditor.Visibility = Visibility.Hidden;
+                    COMETKEY.Visibility = Visibility.Visible;
+                }
             }
-            else
+            catch (Exception)
             {
-                MonacoEditor.Visibility = Visibility.Hidden;
-                COMETKEY.Visibility = Visibility.Visible;
+                MessageBox.Show("KEYSYSTEM INIT ERROR, IF YOU CLICK OPEN WE WILL OPEN 3 LINKS IN YOUR BROWSER, INSTALL REQUIRED PROGRAMS FROM THEM");
+                Process.Start("https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net481-web-installer");
+                Process.Start("https://aka.ms/vs/17/release/vc_redist.x86.exe");
+                Process.Start("https://aka.ms/vs/17/release/vc_redist.x64.exe");
             }
+            
         }
 
         private async void autoinject_Click(object sender, RoutedEventArgs e)
@@ -1489,6 +1496,27 @@ namespace ezsploitv
         }
         public async void injectezsploit()
         {
+            if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "KeylessFluxteam")
+            {
+
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Comet")
+            {
+
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Valyse")
+            {
+
+            }
+            else if (File.ReadAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt") == "Fluxus")
+            {
+
+            }
+            else
+            {
+                File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "KeylessFluxteam");
+            }
+
             Process[] processesByName = Process.GetProcessesByName("Windows10Universal");
             if (processesByName.Length == 0)
             {
@@ -1499,7 +1527,7 @@ namespace ezsploitv
                 sendnotify("Injecting...");
 
                 
-                injectmsgint = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/mikusgszyp/ezsploitfiledownloader/main/getinjectinternal.lua\", true))()";
+                injectmsgint = "loadstring(game:HttpGet(\"http://dziecizautyzmem.ovh/EzSploit/getinjectinternal.txt\", true))()";
                 try
                 {
                     DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(Environment.GetEnvironmentVariable("LocalAppData") + "\\Packages");
@@ -1854,13 +1882,24 @@ namespace ezsploitv
 
             File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\selectedAPI.txt", "Fluxus");
             LogConsole("Selected API: Fluxus");
-            if (Verify(HWID()))
+            
+            try
             {
+                if (Verify(HWID()))
+                {
+                }
+                else
+                {
+                    MonacoEditor.Visibility = Visibility.Hidden;
+                    FLUXUSKEY.Visibility = Visibility.Visible;
+                }
             }
-            else
+            catch (Exception)
             {
-                MonacoEditor.Visibility = Visibility.Hidden;
-                FLUXUSKEY.Visibility = Visibility.Visible;
+                MessageBox.Show("KEYSYSTEM INIT ERROR, IF YOU CLICK OPEN WE WILL OPEN 3 LINKS IN YOUR BROWSER, INSTALL REQUIRED PROGRAMS FROM THEM");
+                Process.Start("https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net481-web-installer");
+                Process.Start("https://aka.ms/vs/17/release/vc_redist.x86.exe");
+                Process.Start("https://aka.ms/vs/17/release/vc_redist.x64.exe");
             }
         }
 
@@ -1997,6 +2036,26 @@ namespace ezsploitv
             File.WriteAllText("c:\\mikusdevPrograms\\ezsploit\\Configs\\textboxconf.txt", "10");
             SetText(File.ReadAllText($"c:/mikusdevPrograms/ezsploit/Configs/script10text.txt"));
             selectedtabcol();
+        }
+
+        private void iwanttodie_Click(object sender, RoutedEventArgs e)
+        {
+            InfoTittle.Content = "About APIs - In order from most stable to most unstable";
+            exampleinfo1.Content = "1. Fluxus - Most stable API, auto-updates, self-made by Fluxus dev, have keysystem.";
+            exampleinfo2.Content = "2. Comet - Have auto-updates, made by Fluxus and Comet dev, have keysystem, best API in script support.";
+            exampleinfo3.Content = "3. KeylessFluxteam - Updates with EzSploit, made by Fluxus dev, WeAreDevs and edited by me.";
+            exampleinfo4.Content = "4. Valyse - Have auto-updates, made by Fluxus and Valyse dev, have shitty servers and functions support.";
+            INFOBORDER.Visibility = Visibility.Visible;
+            Fade(INFOBORDER);
+            ObjectShiftPos(INFOBORDER, INFOBORDER.Margin, new Thickness(10.0, 50.0, 10.0, 137.0));
+        }
+
+        private async void CloseInfo_Click(object sender, RoutedEventArgs e)
+        {
+            ObjectShiftPos(INFOBORDER, INFOBORDER.Margin, new Thickness(10.0, -383.0, 10.0, 570.0));
+            FadeOut(INFOBORDER);
+            await Task.Delay(500);
+            INFOBORDER.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -1,3 +1,5 @@
-2023/06/24-13:13:30.457 37c8 Reusing MANIFEST C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ezsploitv.exe.WebView2\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
-2023/06/24-13:13:30.458 37c8 Recovering log #3
-2023/06/24-13:13:30.458 37c8 Reusing old log C:\Users\mdev\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ezsploitv.exe.WebView2\EBWebView\Default\Site Characteristics Database/000003.log 
+2023/07/04-19:43:57.070 4f54 Log #3: 1 ops saved to Table #4 OK
+2023/07/04-19:43:57.071 4f54 Archiving C:\Users\mikqr\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ezsploitv.exe.WebView2\EBWebView\Default\Site Characteristics Database/000003.log: OK
+2023/07/04-19:43:57.071 4f54 Table #4: 1 entries OK
+2023/07/04-19:43:57.073 4f54 Archiving C:\Users\mikqr\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ezsploitv.exe.WebView2\EBWebView\Default\Site Characteristics Database/MANIFEST-000001: OK
+2023/07/04-19:43:57.079 4f54 **** Repaired leveldb C:\Users\mikqr\Documents\git\ezsploit\Main\ezsploitv\bin\Release\ezsploitv.exe.WebView2\EBWebView\Default\Site Characteristics Database; recovered 1 files; 130 bytes. Some data may have been lost. ****
